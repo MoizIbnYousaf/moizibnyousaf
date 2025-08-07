@@ -12,7 +12,7 @@ export default function SingleView() {
 
   useEffect(() => {
     const timer = setTimeout(() => setIsRevealed(true), 800);
-    const contentTimer = setTimeout(() => setShowContent(true), 2500);
+    const contentTimer = setTimeout(() => setShowContent(true), 4500);
     
     return () => {
       clearTimeout(timer);
@@ -133,19 +133,23 @@ export default function SingleView() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className="text-center max-w-md w-full relative z-10"
+                style={{ filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.05))' }}
               >
                 {/* Name */}
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="text-7xl md:text-8xl font-light text-[var(--void)] mb-3 tracking-tight relative"
-                  style={{ fontWeight: 200 }}
+                  className="text-7xl md:text-8xl font-light text-[var(--void)] mb-3 tracking-tight relative group cursor-default"
+                  style={{ fontWeight: 200, textShadow: '0 2px 10px rgba(0,0,0,0.08)' }}
+                  whileHover={{ scale: 1.02 }}
                 >
                   <motion.span
                     initial={{ clipPath: "inset(100% 0 0 0)" }}
                     animate={{ clipPath: "inset(0 0 0 0)" }}
                     transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+                    className="inline-block bg-gradient-to-r from-[var(--void)] via-[var(--void)] to-[var(--void)] group-hover:from-[var(--sacred-green)] group-hover:via-[var(--divine-gold)] group-hover:to-[var(--sacred-green)] bg-clip-text transition-all duration-700"
+                    style={{ WebkitBackgroundClip: 'text' }}
                   >
                     Moiz
                   </motion.span>
@@ -155,8 +159,8 @@ export default function SingleView() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7, duration: 0.8 }}
-                  className="text-[var(--whisper)] text-xl mb-16"
-                  style={{ letterSpacing: '0.15em' }}
+                  className="text-[var(--whisper)] text-xl mb-16 font-light"
+                  style={{ letterSpacing: '0.25em', textShadow: '0 1px 3px rgba(0,0,0,0.05)' }}
                 >
                   Abdul Moiz Shahzad
                 </motion.p>
@@ -168,21 +172,30 @@ export default function SingleView() {
                   transition={{ delay: 0.8, duration: 0.8 }}
                   className="space-y-5 mb-16"
                 >
-                  <motion.div 
-                    className="text-[var(--whisper)] text-lg"
+                  <motion.a
+                    href="https://www.youtube.com/watch?v=aQSYLruVxeE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--whisper)] text-lg block transition-all duration-300 hover:text-[var(--void)] group cursor-pointer"
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.9, duration: 0.6 }}
+                    whileHover={{ x: 5 }}
                   >
                     <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block"
+                      className="text-[var(--sacred-green)] font-bold inline-block text-xl"
                       animate={{ scale: [1, 1.1, 1] }}
                       transition={{ delay: 1, duration: 0.3 }}
                     >
                       14
                     </motion.span>
                     <span className="ml-3">Spoke at TEDx</span>
-                  </motion.div>
+                    <motion.span 
+                      className="inline-block ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[var(--divine-gold)]"
+                    >
+                      ▶
+                    </motion.span>
+                  </motion.a>
                   
                   <motion.div 
                     className="text-[var(--whisper)] text-lg"
@@ -191,9 +204,9 @@ export default function SingleView() {
                     transition={{ delay: 1, duration: 0.6 }}
                   >
                     <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block"
-                      animate={{ rotate: [0, 5, 0] }}
-                      transition={{ delay: 1.1, duration: 0.3 }}
+                      className="text-[var(--sacred-green)] font-bold inline-block text-xl"
+                      animate={{ rotate: [0, 360] }}
+                      transition={{ delay: 1.1, duration: 1, ease: "easeInOut" }}
                     >
                       💻
                     </motion.span>
@@ -207,9 +220,10 @@ export default function SingleView() {
                     transition={{ delay: 1.1, duration: 0.6 }}
                   >
                     <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ delay: 1.2, duration: 0.3 }}
+                      className="text-[var(--sacred-green)] font-bold inline-block text-lg"
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ delay: 1.2, duration: 0.5 }}
+                      style={{ textShadow: '0 0 20px rgba(212, 175, 55, 0.3)' }}
                     >
                       NOW
                     </motion.span>
@@ -226,7 +240,7 @@ export default function SingleView() {
                 >
                   <button
                     onClick={copyEmail}
-                    className="group relative text-lg font-mono text-[var(--sacred-green)] hover:text-[var(--divine-gold)] transition-all duration-300"
+                    className="group relative text-lg font-mono text-[var(--sacred-green)] hover:text-[var(--divine-gold)] transition-all duration-500 hover:tracking-wider"
                   >
                     <span className="relative">
                       moizibnyousaf@gmail.com
@@ -250,7 +264,7 @@ export default function SingleView() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.3, duration: 0.8 }}
-                  className="flex justify-center gap-6 mb-10"
+                  className="flex justify-center gap-6"
                 >
                   {socialLinks.map((link, i) => (
                     <motion.a
@@ -259,9 +273,15 @@ export default function SingleView() {
                       target="_blank"
                       rel="noopener noreferrer"
                       initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 1.4 + i * 0.1, duration: 0.3 }}
-                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      animate={{ 
+                        scale: 1,
+                        y: [0, -5, 0]
+                      }}
+                      transition={{ 
+                        scale: { delay: 1.4 + i * 0.1, duration: 0.3 },
+                        y: { delay: 2 + i * 0.2, duration: 3, repeat: Infinity, ease: "easeInOut" }
+                      }}
+                      whileHover={{ scale: 1.15, rotate: 5 }}
                       whileTap={{ scale: 0.9 }}
                       className="relative w-12 h-12 rounded-full border border-[var(--soft-gray)] flex items-center justify-center hover:border-[var(--sacred-green)] hover:bg-[var(--sacred-green)] hover:text-white transition-all duration-300 group"
                     >
@@ -271,31 +291,6 @@ export default function SingleView() {
                   ))}
                 </motion.div>
 
-                {/* TEDx link */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.5, duration: 0.8 }}
-                >
-                  <a
-                    href="https://www.youtube.com/watch?v=aQSYLruVxeE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[var(--whisper)] hover:text-[var(--sacred-green)] transition-all duration-300 group"
-                  >
-                    <span className="relative">
-                      Watch TEDx Talk
-                      <span className="absolute inset-x-0 bottom-0 h-[1px] bg-[var(--sacred-green)] scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                    </span>
-                    <motion.span
-                      className="inline-block"
-                      animate={{ x: 0 }}
-                      whileHover={{ x: 5 }}
-                    >
-                      →
-                    </motion.span>
-                  </a>
-                </motion.div>
               </motion.div>
             </div>
           </motion.div>
