@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import GeometricFrame from "./GeometricFrame";
 
 export default function SingleView() {
   const [showContent, setShowContent] = useState(false);
@@ -147,12 +148,15 @@ export default function SingleView() {
             </motion.header>
 
             {/* Main centered content */}
-            <div className="flex-1 flex items-center justify-center px-8">
+            <div className="flex-1 flex items-center justify-center px-8 relative">
+              {/* Geometric frame background */}
+              <GeometricFrame />
+              
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-center max-w-md w-full"
+                className="text-center max-w-md w-full relative z-10"
               >
                 {/* Name */}
                 <motion.h1
