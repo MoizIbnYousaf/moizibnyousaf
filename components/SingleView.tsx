@@ -137,23 +137,19 @@ export default function SingleView() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className="text-center max-w-md w-full relative z-10"
-                style={{ filter: 'drop-shadow(0 4px 20px rgba(0,0,0,0.05))' }}
               >
                 {/* Name */}
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="text-7xl md:text-8xl font-light text-[var(--void)] mb-3 tracking-tight relative group cursor-default"
-                  style={{ fontWeight: 200, textShadow: '0 2px 10px rgba(0,0,0,0.08)' }}
-                  whileHover={{ scale: 1.02 }}
+                  className="text-7xl md:text-8xl font-light text-[var(--void)] mb-3 tracking-tight relative"
+                  style={{ fontWeight: 200 }}
                 >
                   <motion.span
                     initial={{ clipPath: "inset(100% 0 0 0)" }}
                     animate={{ clipPath: "inset(0 0 0 0)" }}
                     transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
-                    className="inline-block bg-gradient-to-r from-[var(--void)] via-[var(--void)] to-[var(--void)] group-hover:from-[var(--sacred-green)] group-hover:via-[var(--divine-gold)] group-hover:to-[var(--sacred-green)] bg-clip-text transition-all duration-700"
-                    style={{ WebkitBackgroundClip: 'text' }}
                   >
                     Moiz
                   </motion.span>
@@ -164,7 +160,7 @@ export default function SingleView() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7, duration: 0.8 }}
                   className="text-[var(--whisper)] text-xl mb-16 font-light"
-                  style={{ letterSpacing: '0.25em', textShadow: '0 1px 3px rgba(0,0,0,0.05)' }}
+                  style={{ letterSpacing: '0.25em' }}
                 >
                   Abdul Moiz Shahzad
                 </motion.p>
@@ -186,13 +182,9 @@ export default function SingleView() {
                     transition={{ delay: 0.9, duration: 0.6 }}
                     whileHover={{ x: 5 }}
                   >
-                    <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ delay: 1, duration: 0.3 }}
-                    >
+                    <span className="text-[var(--sacred-green)] font-bold inline-block">
                       14
-                    </motion.span>
+                    </span>
                     <span className="ml-3">Spoke at TEDx</span>
                     <motion.span 
                       className="inline-block ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[var(--divine-gold)]"
@@ -207,13 +199,9 @@ export default function SingleView() {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 1, duration: 0.6 }}
                   >
-                    <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block"
-                      animate={{ rotate: [0, 360] }}
-                      transition={{ delay: 1.1, duration: 1, ease: "easeInOut" }}
-                    >
+                    <span className="text-[var(--sacred-green)] font-bold inline-block">
                       💻
-                    </motion.span>
+                    </span>
                     <span className="ml-3">Self-taught coder</span>
                   </motion.div>
                   
