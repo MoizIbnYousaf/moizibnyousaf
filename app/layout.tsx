@@ -22,23 +22,33 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Abdul Moiz Shahzad",
-  description: "that man will only have what he has worked towards",
+  title: "that man will only have what he has worked towards",
+  description: "Quran 53:39",
   keywords: ["Abdul Moiz Shahzad", "Moiz", "TEDx", "Developer", "Entrepreneur"],
   authors: [{ name: "Abdul Moiz Shahzad" }],
   openGraph: {
-    title: "Abdul Moiz Shahzad",
-    description: "that man will only have what he has worked towards",
+    title: "that man will only have what he has worked towards",
+    description: "Quran 53:39",
     type: "website",
     locale: "en_US",
     url: "https://moizibnyousaf.com",
-    siteName: "Abdul Moiz Shahzad",
+    siteName: "moizibnyousaf.com",
+    images: [
+      {
+        url: "/twitter-image",
+        width: 1200,
+        height: 630,
+        alt: "that man will only have what he has worked towards",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    site: "@MoizIbnYousaf",
+    creator: "@MoizIbnYousaf",
     title: "that man will only have what he has worked towards",
     description: "Quran 53:39",
-    creator: "@MoizIbnYousaf",
+    images: ["/twitter-image"],
   },
   icons: {
     icon: "/icon.svg",
