@@ -223,14 +223,7 @@ export default function SingleView() {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 1.1, duration: 0.6 }}
                   >
-                    <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ delay: 1.2, duration: 0.3 }}
-                    >
-                      NOW
-                    </motion.span>
-                    <span className="ml-3">Building ventures</span>
+                    <span className="text-[var(--whisper)]">Building ventures</span>
                   </motion.div>
                 </motion.div>
 
