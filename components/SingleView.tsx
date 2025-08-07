@@ -2,13 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import IslamicFrame from "./IslamicFrame";
 
 export default function SingleView() {
   const [showContent, setShowContent] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
-  const [hoveredMilestone, setHoveredMilestone] = useState<number | null>(null);
   
 
   useEffect(() => {
@@ -47,8 +45,6 @@ export default function SingleView() {
   return (
     <div className="h-screen w-screen flex flex-col relative overflow-hidden">
 
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-green-50/5 pointer-events-none" />
 
       <AnimatePresence mode="wait">
         {!showContent ? (
@@ -152,12 +148,11 @@ export default function SingleView() {
 
             {/* Main centered content */}
             <div className="flex-1 flex items-center justify-center px-8">
-              <IslamicFrame className="w-full max-w-2xl">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-center max-w-md w-full mx-auto py-12 px-8"
+                className="text-center max-w-md w-full"
               >
                 {/* Name */}
                 <motion.h1
@@ -194,21 +189,15 @@ export default function SingleView() {
                   className="space-y-5 mb-16"
                 >
                   <motion.div 
-                    className="text-[var(--whisper)] text-lg cursor-default transition-all duration-300"
+                    className="text-[var(--whisper)] text-lg"
                     initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: hoveredMilestone === 0 ? 5 : 0, opacity: 1 }}
+                    animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.9, duration: 0.6 }}
-                    onMouseEnter={() => setHoveredMilestone(0)}
-                    onMouseLeave={() => setHoveredMilestone(null)}
-                    whileHover={{ color: "var(--void)" }}
                   >
                     <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block text-2xl"
-                      animate={{ 
-                        scale: hoveredMilestone === 0 ? 1.2 : 1,
-                        rotate: hoveredMilestone === 0 ? [0, -5, 5, 0] : 0
-                      }}
-                      transition={{ duration: 0.3 }}
+                      className="text-[var(--sacred-green)] font-bold inline-block"
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ delay: 1, duration: 0.3 }}
                     >
                       14
                     </motion.span>
@@ -216,21 +205,15 @@ export default function SingleView() {
                   </motion.div>
                   
                   <motion.div 
-                    className="text-[var(--whisper)] text-lg cursor-default transition-all duration-300"
+                    className="text-[var(--whisper)] text-lg"
                     initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: hoveredMilestone === 1 ? 5 : 0, opacity: 1 }}
+                    animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 1, duration: 0.6 }}
-                    onMouseEnter={() => setHoveredMilestone(1)}
-                    onMouseLeave={() => setHoveredMilestone(null)}
-                    whileHover={{ color: "var(--void)" }}
                   >
                     <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block text-2xl"
-                      animate={{ 
-                        scale: hoveredMilestone === 1 ? 1.2 : 1,
-                        rotate: hoveredMilestone === 1 ? [0, 360] : 0
-                      }}
-                      transition={{ duration: 0.5 }}
+                      className="text-[var(--sacred-green)] font-bold inline-block"
+                      animate={{ rotate: [0, 5, 0] }}
+                      transition={{ delay: 1.1, duration: 0.3 }}
                     >
                       💻
                     </motion.span>
@@ -238,23 +221,15 @@ export default function SingleView() {
                   </motion.div>
                   
                   <motion.div 
-                    className="text-[var(--whisper)] text-lg cursor-default transition-all duration-300"
+                    className="text-[var(--whisper)] text-lg"
                     initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: hoveredMilestone === 2 ? 5 : 0, opacity: 1 }}
+                    animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 1.1, duration: 0.6 }}
-                    onMouseEnter={() => setHoveredMilestone(2)}
-                    onMouseLeave={() => setHoveredMilestone(null)}
-                    whileHover={{ color: "var(--void)" }}
                   >
                     <motion.span 
                       className="text-[var(--sacred-green)] font-bold inline-block"
-                      animate={{ 
-                        scale: hoveredMilestone === 2 ? [1, 1.3, 1.2] : 1,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      style={{ 
-                        textShadow: hoveredMilestone === 2 ? "0 0 20px rgba(44, 85, 48, 0.5)" : "none"
-                      }}
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ delay: 1.2, duration: 0.3 }}
                     >
                       NOW
                     </motion.span>
@@ -342,11 +317,10 @@ export default function SingleView() {
                   </a>
                 </motion.div>
               </motion.div>
-              </IslamicFrame>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   );
-}// Force rebuild
+}
