@@ -31,9 +31,9 @@ export default function SingleView() {
   ];
 
   const socialLinks = [
-    { name: "X", handle: "@MoizIbnYousaf", url: "https://x.com/MoizIbnYousaf", icon: "𝕏" },
-    { name: "GitHub", handle: "moizibnyousaf", url: "https://github.com/moizibnyousaf", icon: "⌘" },
-    { name: "LinkedIn", handle: "moizibnyousaf", url: "https://linkedin.com/in/moizibnyousaf", icon: "in" },
+    { name: "X", handle: "@MoizIbnYousaf", url: "https://x.com/MoizIbnYousaf", icon: "X" },
+    { name: "GitHub", handle: "moizibnyousaf", url: "https://github.com/moizibnyousaf", icon: "GH" },
+    { name: "LinkedIn", handle: "moizibnyousaf", url: "https://linkedin.com/in/moizibnyousaf", icon: "In" },
   ];
 
   const copyEmail = () => {
@@ -183,7 +183,7 @@ export default function SingleView() {
                     whileHover={{ x: 5 }}
                   >
                     <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block text-xl"
+                      className="text-[var(--sacred-green)] font-bold inline-block"
                       animate={{ scale: [1, 1.1, 1] }}
                       transition={{ delay: 1, duration: 0.3 }}
                     >
@@ -204,7 +204,7 @@ export default function SingleView() {
                     transition={{ delay: 1, duration: 0.6 }}
                   >
                     <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block text-xl"
+                      className="text-[var(--sacred-green)] font-bold inline-block"
                       animate={{ rotate: [0, 360] }}
                       transition={{ delay: 1.1, duration: 1, ease: "easeInOut" }}
                     >
@@ -220,10 +220,9 @@ export default function SingleView() {
                     transition={{ delay: 1.1, duration: 0.6 }}
                   >
                     <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block text-lg"
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{ delay: 1.2, duration: 0.5 }}
-                      style={{ textShadow: '0 0 20px rgba(212, 175, 55, 0.3)' }}
+                      className="text-[var(--sacred-green)] font-bold inline-block"
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ delay: 1.2, duration: 0.3 }}
                     >
                       NOW
                     </motion.span>
@@ -273,19 +272,13 @@ export default function SingleView() {
                       target="_blank"
                       rel="noopener noreferrer"
                       initial={{ scale: 0 }}
-                      animate={{ 
-                        scale: 1,
-                        y: [0, -5, 0]
-                      }}
-                      transition={{ 
-                        scale: { delay: 1.4 + i * 0.1, duration: 0.3 },
-                        y: { delay: 2 + i * 0.2, duration: 3, repeat: Infinity, ease: "easeInOut" }
-                      }}
-                      whileHover={{ scale: 1.15, rotate: 5 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 1.4 + i * 0.1, duration: 0.3 }}
+                      whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="relative w-12 h-12 rounded-full border border-[var(--soft-gray)] flex items-center justify-center hover:border-[var(--sacred-green)] hover:bg-[var(--sacred-green)] hover:text-white transition-all duration-300 group"
+                      className="relative w-11 h-11 rounded-full border border-[var(--soft-gray)] flex items-center justify-center hover:border-[var(--sacred-green)] hover:bg-[var(--sacred-green)] hover:text-white transition-all duration-300 group"
                     >
-                      <span className="text-lg">{link.icon}</span>
+                      <span className="text-sm font-medium">{link.icon}</span>
                       <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[var(--sacred-green)] rounded-full opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300" />
                     </motion.a>
                   ))}
