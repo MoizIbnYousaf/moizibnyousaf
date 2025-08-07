@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import GeometricFrame from "./GeometricFrame";
+import MihrabFrame from "./MihrabFrame";
 
 export default function SingleView() {
   const [showContent, setShowContent] = useState(false);
@@ -125,8 +125,8 @@ export default function SingleView() {
 
             {/* Main centered content */}
             <div className="flex-1 flex items-center justify-center px-8 relative">
-              {/* Geometric frame background */}
-              <GeometricFrame />
+              {/* Mihrab arch frame */}
+              <MihrabFrame />
               
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
