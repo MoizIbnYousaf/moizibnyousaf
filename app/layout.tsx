@@ -23,12 +23,12 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Abdul Moiz Shahzad",
-  description: "Building with purpose - وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ",
+  description: "that man will only have what he has worked towards",
   keywords: ["Abdul Moiz Shahzad", "Moiz", "TEDx", "Developer", "Entrepreneur"],
   authors: [{ name: "Abdul Moiz Shahzad" }],
   openGraph: {
     title: "Abdul Moiz Shahzad",
-    description: "Building with purpose - that man will only have what he has worked towards",
+    description: "that man will only have what he has worked towards",
     type: "website",
     locale: "en_US",
     url: "https://moizibnyousaf.com",
