@@ -52,8 +52,11 @@ export const metadata: Metadata = {
     images: ["https://www.moizibnyousaf.com/twitter-image"],
   },
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon.svg" }
+    ],
+    shortcut: "/favicon.svg",
     apple: "/icon.svg",
   },
 };
