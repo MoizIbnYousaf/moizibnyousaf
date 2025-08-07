@@ -32,8 +32,8 @@ export default function SingleView() {
 
   const socialLinks = [
     { name: "X", handle: "@MoizIbnYousaf", url: "https://x.com/MoizIbnYousaf", icon: "X" },
-    { name: "GitHub", handle: "moizibnyousaf", url: "https://github.com/moizibnyousaf", icon: "GH" },
-    { name: "LinkedIn", handle: "moizibnyousaf", url: "https://linkedin.com/in/moizibnyousaf", icon: "In" },
+    { name: "GitHub", handle: "MoizIbnYousaf", url: "https://github.com/MoizIbnYousaf", icon: "GH" },
+    { name: "LinkedIn", handle: "abdul-moiz-shahzad", url: "https://www.linkedin.com/in/abdul-moiz-shahzad-43242a277/", icon: "In" },
   ];
 
   const copyEmail = () => {
