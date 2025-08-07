@@ -22,20 +22,28 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Moiz - وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ",
-  description: "That man will only have what he has worked towards - A digital sanctuary of faith and code",
-  keywords: ["Moiz", "Abdul Moiz Shahzad", "Developer", "Muslim", "TEDx", "Entrepreneur"],
+  title: "Abdul Moiz Shahzad",
+  description: "Building with purpose - وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ",
+  keywords: ["Abdul Moiz Shahzad", "Moiz", "TEDx", "Developer", "Entrepreneur"],
   authors: [{ name: "Abdul Moiz Shahzad" }],
   openGraph: {
-    title: "Moiz - وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ",
-    description: "That man will only have what he has worked towards",
+    title: "Abdul Moiz Shahzad",
+    description: "Building with purpose - that man will only have what he has worked towards",
     type: "website",
     locale: "en_US",
-    url: "https://moiz.dev",
+    url: "https://moizibnyousaf.com",
+    siteName: "Abdul Moiz Shahzad",
   },
   twitter: {
     card: "summary_large_image",
+    title: "Abdul Moiz Shahzad",
+    description: "Building with purpose - that man will only have what he has worked towards",
     creator: "@MoizIbnYousaf",
+  },
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
