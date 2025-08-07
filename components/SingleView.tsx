@@ -32,7 +32,7 @@ export default function SingleView() {
 
   const socialLinks = [
     { name: "X", handle: "@MoizIbnYousaf", url: "https://x.com/MoizIbnYousaf", icon: "X" },
-    { name: "GitHub", handle: "MoizIbnYousaf", url: "https://github.com/MoizIbnYousaf", icon: "⇥" },
+    { name: "GitHub", handle: "MoizIbnYousaf", url: "https://github.com/MoizIbnYousaf", icon: "⌘" },
     { name: "LinkedIn", handle: "abdul-moiz-shahzad", url: "https://www.linkedin.com/in/abdul-moiz-shahzad-43242a277/", icon: "In" },
   ];
 
