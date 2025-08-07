@@ -48,23 +48,23 @@ export default function LegoBlock({
       >
         {/* LEGO Block Faces */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 rounded-sm"
           style={{
-            background: `linear-gradient(135deg, ${color}22, ${color}44)`,
-            border: `1px solid ${color}`,
+            background: `linear-gradient(135deg, ${color}33, ${color}66)`,
+            border: `2px solid ${color}`,
             backdropFilter: "blur(10px)",
-            boxShadow: glowing ? `0 0 20px ${color}44` : "none",
+            boxShadow: glowing ? `0 0 30px ${color}88` : `0 2px 10px ${color}33`,
           }}
         />
         
         {/* Top studs */}
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
           <div
-            className="w-2 h-2 rounded-full"
+            className="w-3 h-3 rounded-full"
             style={{
               background: color,
-              opacity: 0.6,
-              boxShadow: `0 -2px 4px ${color}44`,
+              opacity: 0.8,
+              boxShadow: `0 -2px 4px ${color}66`,
             }}
           />
         </div>

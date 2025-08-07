@@ -88,7 +88,7 @@ export default function SingleView() {
               <motion.div
                 animate={{
                   scale: [0, 1, 1.2, 0],
-                  opacity: [0, 0.05, 0.08, 0],
+                  opacity: [0, 0.15, 0.2, 0],
                   filter: ["blur(0px)", "blur(0px)", "blur(2px)", "blur(10px)"],
                 }}
                 transition={{
@@ -126,7 +126,7 @@ export default function SingleView() {
                   animate={{ opacity: 0 }}
                   transition={{ delay: 1.5, duration: 0.5 }}
                 >
-                  <LegoBlock size={40} color="var(--sacred-green)" opacity={0.3} glowing />
+                  <LegoBlock size={60} color="var(--sacred-green)" opacity={0.6} glowing />
                 </motion.div>
               )}
 
