@@ -115,14 +115,14 @@ export default function SingleView() {
             </motion.header>
 
             {/* Main content grid */}
-            <div className="flex-1 px-8 py-12 overflow-hidden">
-              <div className="max-w-7xl mx-auto h-full grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="flex-1 flex items-center justify-center px-8 py-12 overflow-hidden">
+              <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-3 gap-12">
                 {/* Left column - Identity */}
                 <motion.div
                   initial={{ x: -50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.4, duration: 0.8 }}
-                  className="space-y-8"
+                  className="space-y-8 flex flex-col justify-center"
                 >
                   <div>
                     <h1 className="text-4xl md:text-5xl font-light text-[var(--void)] mb-4">
@@ -159,7 +159,7 @@ export default function SingleView() {
                       Code as worship
                     </p>
                     <p className="text-[var(--whisper)] max-w-xs">
-                      Every function is a prayer, every commit an act of faith
+                      Man and jinn were created for worship
                     </p>
                   </div>
                 </motion.div>
@@ -169,38 +169,36 @@ export default function SingleView() {
                   initial={{ x: 50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.8, duration: 0.8 }}
-                  className="flex flex-col justify-between"
+                  className="flex flex-col justify-center space-y-8"
                 >
-                  <div className="space-y-8">
-                    <div>
-                      <h3 className="text-2xl font-light text-[var(--void)] mb-4">
-                        Connect
-                      </h3>
-                      <a
-                        href="mailto:moizibnyousaf@gmail.com"
-                        className="text-lg text-[var(--sacred-green)] hover:text-[var(--divine-gold)] transition-colors"
-                      >
-                        moizibnyousaf@gmail.com
-                      </a>
-                    </div>
-
-                    <div className="flex gap-4">
-                      {socialLinks.map((link) => (
-                        <motion.a
-                          key={link.name}
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          whileHover={{ scale: 1.1 }}
-                          className="w-10 h-10 rounded-full border border-[var(--soft-gray)] flex items-center justify-center hover:border-[var(--sacred-green)] hover:bg-[var(--sacred-green)] hover:text-white transition-all duration-300"
-                        >
-                          {link.icon}
-                        </motion.a>
-                      ))}
-                    </div>
+                  <div>
+                    <h3 className="text-2xl font-light text-[var(--void)] mb-4">
+                      Connect
+                    </h3>
+                    <a
+                      href="mailto:moizibnyousaf@gmail.com"
+                      className="text-lg text-[var(--sacred-green)] hover:text-[var(--divine-gold)] transition-colors"
+                    >
+                      moizibnyousaf@gmail.com
+                    </a>
                   </div>
 
-                  <div className="mt-auto">
+                  <div className="flex gap-4">
+                    {socialLinks.map((link) => (
+                      <motion.a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1 }}
+                        className="w-10 h-10 rounded-full border border-[var(--soft-gray)] flex items-center justify-center hover:border-[var(--sacred-green)] hover:bg-[var(--sacred-green)] hover:text-white transition-all duration-300"
+                      >
+                        {link.icon}
+                      </motion.a>
+                    ))}
+                  </div>
+
+                  <div>
                     <a
                       href="https://www.youtube.com/watch?v=aQSYLruVxeE"
                       target="_blank"
