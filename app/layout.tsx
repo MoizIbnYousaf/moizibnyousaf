@@ -52,12 +52,13 @@ export const metadata: Metadata = {
     images: ["https://www.moizibnyousaf.com/twitter-image"],
   },
   icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/icon.svg" }
-    ],
+    icon: "/favicon.svg",
     shortcut: "/favicon.svg",
-    apple: "/icon.svg",
+    apple: "/favicon.svg",
+    other: {
+      rel: "icon",
+      url: "/favicon.svg",
+    },
   },
 };
 
@@ -68,6 +69,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${notoNaskh.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
       <body className="font-sans antialiased">
         {children}
       </body>
