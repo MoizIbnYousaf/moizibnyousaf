@@ -275,11 +275,9 @@ export default function SingleView() {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 1.4 + i * 0.1, duration: 0.3 }}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.4 + i * 0.1, duration: 0.5 }}
                       className="relative w-11 h-11 rounded-full border border-[var(--soft-gray)] flex items-center justify-center hover:border-[var(--sacred-green)] hover:bg-[var(--sacred-green)] hover:text-white transition-all duration-300 group"
                     >
                       {typeof link.icon === 'string' ? (
@@ -287,7 +285,6 @@ export default function SingleView() {
                       ) : (
                         link.icon
                       )}
-                      <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-[var(--sacred-green)] rounded-full opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300" />
                     </motion.a>
                   ))}
                 </motion.div>
