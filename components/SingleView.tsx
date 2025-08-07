@@ -1,44 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
-import LegoBlock from "./LegoBlock";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function SingleView() {
   const [showContent, setShowContent] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
-  const [showLegoTransform, setShowLegoTransform] = useState(true);
   
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  
-  const backgroundX = useTransform(mouseX, [0, 1000], [0, 50]);
-  const backgroundY = useTransform(mouseY, [0, 1000], [0, 50]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsRevealed(true), 800);
-    const transformTimer = setTimeout(() => setShowLegoTransform(false), 3000);
-    const contentTimer = setTimeout(() => setShowContent(true), 3500);
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-    
-    if (typeof window !== 'undefined') {
-      window.addEventListener("mousemove", handleMouseMove);
-    }
+    const contentTimer = setTimeout(() => setShowContent(true), 2500);
     
     return () => {
       clearTimeout(timer);
-      clearTimeout(transformTimer);
       clearTimeout(contentTimer);
-      if (typeof window !== 'undefined') {
-        window.removeEventListener("mousemove", handleMouseMove);
-      }
     };
-  }, [mouseX, mouseY]);
+  }, []);
 
   const arabicLetters = [
     { char: "وَ", delay: 0.3 },
@@ -62,54 +41,16 @@ export default function SingleView() {
     setTimeout(() => setEmailCopied(false), 2000);
   };
 
-  // Background LEGO lifecycle blocks
-  const backgroundBlocks = [
-    { x: "10%", y: "20%", delay: 0, size: 15 },
-    { x: "80%", y: "30%", delay: 2, size: 20 },
-    { x: "20%", y: "70%", delay: 4, size: 18 },
-    { x: "70%", y: "60%", delay: 6, size: 16 },
-    { x: "50%", y: "40%", delay: 8, size: 14 },
-  ];
 
   return (
     <div className="h-screen w-screen flex flex-col relative overflow-hidden">
-      {/* Background LEGO Lifecycle - Stage 3: Continuous Return */}
-      {showContent && (
-        <div className="absolute inset-0 pointer-events-none">
-          {backgroundBlocks.map((block, i) => (
-            <motion.div
-              key={i}
-              className="absolute"
-              style={{ left: block.x, top: block.y }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: block.delay }}
-            >
-              <motion.div
-                animate={{
-                  scale: [0, 1, 1.2, 0],
-                  opacity: [0, 0.3, 0.4, 0],
-                }}
-                transition={{
-                  duration: 12,
-                  repeat: Infinity,
-                  delay: block.delay,
-                  ease: "easeInOut",
-                }}
-              >
-                <LegoBlock size={block.size * 2} color="#2C5530" opacity={0.3} />
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
-      )}
 
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-green-50/5 pointer-events-none" />
 
       <AnimatePresence mode="wait">
         {!showContent ? (
-          // Stage 1: Creation - Single Block to Verse
+          // Verse Display
           <motion.div
             key="verse"
             exit={{ opacity: 0, scale: 0.95 }}
@@ -117,20 +58,7 @@ export default function SingleView() {
             className="flex-1 flex items-center justify-center"
           >
             <div className="text-center px-4 relative">
-              {/* Initial LEGO Block - The Drop */}
-              {showLegoTransform && (
-                <motion.div
-                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                  style={{ zIndex: 10 }}
-                  initial={{ opacity: 1, scale: 1 }}
-                  animate={{ opacity: 0, scale: 1.5 }}
-                  transition={{ delay: 1.8, duration: 0.8 }}
-                >
-                  <LegoBlock size={80} color="#2C5530" opacity={1} glowing />
-                </motion.div>
-              )}
-
-              {/* Arabic verse emerging from blocks */}
+              {/* Arabic verse */}
               <motion.div 
                 className="mb-8"
                 animate={{ 
@@ -187,7 +115,7 @@ export default function SingleView() {
             </div>
           </motion.div>
         ) : (
-          // Stage 2: Life/Test - Building with Blocks
+          // Main Content
           <motion.div
             key="content"
             initial={{ opacity: 0 }}
@@ -220,7 +148,7 @@ export default function SingleView() {
               </div>
             </motion.header>
 
-            {/* Main centered content - Stage 2: Building Life */}
+            {/* Main centered content */}
             <div className="flex-1 flex items-center justify-center px-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -228,7 +156,7 @@ export default function SingleView() {
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className="text-center max-w-md w-full"
               >
-                {/* Name with LEGO build effect */}
+                {/* Name */}
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -255,7 +183,7 @@ export default function SingleView() {
                   Abdul Moiz Shahzad
                 </motion.p>
 
-                {/* Milestones with LEGO building animation */}
+                {/* Milestones */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
