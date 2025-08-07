@@ -120,32 +120,8 @@ export default function SingleView() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="flex flex-col h-full"
+            className="flex flex-col h-full justify-center"
           >
-            {/* Header with verse - breathing animation */}
-            <motion.header
-              initial={{ y: -50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="px-8 py-4 border-b border-[var(--soft-gray)]"
-            >
-              <div className="max-w-7xl mx-auto flex justify-between items-center">
-                <motion.div 
-                  className="font-arabic text-xl md:text-2xl text-[var(--sacred-green)] opacity-70"
-                  animate={{ 
-                    opacity: [0.7, 0.9, 0.7],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ
-                </motion.div>
-                <div className="text-sm text-[var(--whisper)]">53:39</div>
-              </div>
-            </motion.header>
 
             {/* Main centered content */}
             <div className="flex-1 flex items-center justify-center px-8 relative">
