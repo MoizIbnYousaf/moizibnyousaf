@@ -91,7 +91,7 @@ export default function SingleView() {
             </div>
           </motion.div>
         ) : (
-          // Main content - single view
+          // Main content - single centered column
           <motion.div
             key="content"
             initial={{ opacity: 0 }}
@@ -104,113 +104,121 @@ export default function SingleView() {
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="px-8 py-6 border-b border-[var(--soft-gray)]"
+              className="px-8 py-4 border-b border-[var(--soft-gray)]"
             >
               <div className="max-w-7xl mx-auto flex justify-between items-center">
-                <div className="font-arabic text-2xl text-[var(--void)] opacity-80">
+                <div className="font-arabic text-xl md:text-2xl text-[var(--void)] opacity-60">
                   وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ
                 </div>
                 <div className="text-sm text-[var(--whisper)]">53:39</div>
               </div>
             </motion.header>
 
-            {/* Main content grid */}
-            <div className="flex-1 flex items-center justify-center px-8 py-12 overflow-hidden">
-              <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-3 gap-12">
-                {/* Left column - Identity */}
-                <motion.div
-                  initial={{ x: -50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="space-y-8 flex flex-col justify-center"
+            {/* Main centered content */}
+            <div className="flex-1 flex items-center justify-center px-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="text-center max-w-md w-full"
+              >
+                {/* Name */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className="text-6xl md:text-7xl font-light text-[var(--void)] mb-2"
                 >
-                  <div>
-                    <h1 className="text-4xl md:text-5xl font-light text-[var(--void)] mb-4">
-                      Moiz
-                    </h1>
-                    <p className="text-[var(--whisper)] text-lg">
-                      Abdul Moiz Shahzad
-                    </p>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div className="text-[var(--whisper)]">
-                      <span className="text-[var(--sacred-green)] font-bold">14</span> — Spoke at TEDx
-                    </div>
-                    <div className="text-[var(--whisper)]">
-                      <span className="text-[var(--sacred-green)] font-bold">∞</span> — Self-taught coder
-                    </div>
-                    <div className="text-[var(--whisper)]">
-                      <span className="text-[var(--sacred-green)] font-bold">NOW</span> — Building ventures
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Center column - Philosophy */}
-                <motion.div
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
+                  Moiz
+                </motion.h1>
+                
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ delay: 0.6, duration: 0.8 }}
-                  className="flex items-center justify-center"
+                  className="text-[var(--whisper)] text-xl mb-12"
                 >
-                  <div className="text-center space-y-6">
-                    <div className="text-6xl">🕌</div>
-                    <p className="text-xl text-[var(--void)] font-light">
-                      Code as worship
-                    </p>
-                    <p className="text-[var(--whisper)] max-w-xs">
-                      Man and jinn were created for worship
-                    </p>
+                  Abdul Moiz Shahzad
+                </motion.p>
+
+                {/* Milestones */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.8 }}
+                  className="space-y-3 mb-12"
+                >
+                  <div className="text-[var(--whisper)] text-lg">
+                    <span className="text-[var(--sacred-green)] font-bold">14</span> — Spoke at TEDx
+                  </div>
+                  <div className="text-[var(--whisper)] text-lg">
+                    <span className="text-[var(--sacred-green)] font-bold">∞</span> — Self-taught coder
+                  </div>
+                  <div className="text-[var(--whisper)] text-lg">
+                    <span className="text-[var(--sacred-green)] font-bold">NOW</span> — Building ventures
                   </div>
                 </motion.div>
 
-                {/* Right column - Connect */}
+                {/* Email */}
                 <motion.div
-                  initial={{ x: 50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ delay: 0.8, duration: 0.8 }}
-                  className="flex flex-col justify-center space-y-8"
+                  className="mb-8"
                 >
-                  <div>
-                    <h3 className="text-2xl font-light text-[var(--void)] mb-4">
-                      Connect
-                    </h3>
-                    <a
-                      href="mailto:moizibnyousaf@gmail.com"
-                      className="text-lg text-[var(--sacred-green)] hover:text-[var(--divine-gold)] transition-colors"
-                    >
-                      moizibnyousaf@gmail.com
-                    </a>
-                  </div>
+                  <a
+                    href="mailto:moizibnyousaf@gmail.com"
+                    className="text-xl text-[var(--sacred-green)] hover:text-[var(--divine-gold)] transition-all duration-300 hover:tracking-wide"
+                  >
+                    moizibnyousaf@gmail.com
+                  </a>
+                </motion.div>
 
-                  <div className="flex gap-4">
-                    {socialLinks.map((link) => (
-                      <motion.a
-                        key={link.name}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        className="w-10 h-10 rounded-full border border-[var(--soft-gray)] flex items-center justify-center hover:border-[var(--sacred-green)] hover:bg-[var(--sacred-green)] hover:text-white transition-all duration-300"
-                      >
-                        {link.icon}
-                      </motion.a>
-                    ))}
-                  </div>
-
-                  <div>
-                    <a
-                      href="https://www.youtube.com/watch?v=aQSYLruVxeE"
+                {/* Social links */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.9, duration: 0.8 }}
+                  className="flex justify-center gap-6 mb-8"
+                >
+                  {socialLinks.map((link) => (
+                    <motion.a
+                      key={link.name}
+                      href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-[var(--whisper)] hover:text-[var(--void)] transition-colors"
+                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-12 h-12 rounded-full border border-[var(--soft-gray)] flex items-center justify-center hover:border-[var(--sacred-green)] hover:bg-[var(--sacred-green)] hover:text-white transition-all duration-300"
                     >
-                      <span>Watch TEDx Talk</span>
-                      <span>→</span>
-                    </a>
-                  </div>
+                      <span className="text-lg">{link.icon}</span>
+                    </motion.a>
+                  ))}
                 </motion.div>
-              </div>
+
+                {/* TEDx link */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1, duration: 0.8 }}
+                >
+                  <a
+                    href="https://www.youtube.com/watch?v=aQSYLruVxeE"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-[var(--whisper)] hover:text-[var(--void)] transition-all duration-300 group"
+                  >
+                    <span>Watch TEDx Talk</span>
+                    <motion.span
+                      className="inline-block"
+                      animate={{ x: 0 }}
+                      whileHover={{ x: 5 }}
+                    >
+                      →
+                    </motion.span>
+                  </a>
+                </motion.div>
+              </motion.div>
             </div>
           </motion.div>
         )}
