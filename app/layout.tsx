@@ -22,6 +22,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.moizibnyousaf.com'),
   title: "that man will only have what he has worked towards",
   description: "Quran 53:39",
   keywords: ["Abdul Moiz Shahzad", "Moiz", "TEDx", "Developer", "Entrepreneur"],
@@ -31,11 +32,11 @@ export const metadata: Metadata = {
     description: "Quran 53:39",
     type: "website",
     locale: "en_US",
-    url: "https://moizibnyousaf.com",
+    url: "https://www.moizibnyousaf.com",
     siteName: "moizibnyousaf.com",
     images: [
       {
-        url: "/twitter-image",
+        url: "https://www.moizibnyousaf.com/twitter-image",
         width: 1200,
         height: 630,
         alt: "that man will only have what he has worked towards",
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     creator: "@MoizIbnYousaf",
     title: "that man will only have what he has worked towards",
     description: "Quran 53:39",
-    images: ["/twitter-image"],
+    images: ["https://www.moizibnyousaf.com/twitter-image"],
   },
   icons: {
     icon: "/icon.svg",
