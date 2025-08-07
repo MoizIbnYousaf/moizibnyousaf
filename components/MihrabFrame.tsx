@@ -5,30 +5,6 @@ import { motion } from "framer-motion";
 export default function MihrabFrame() {
   return (
     <>
-      {/* Golden particles effect - more subtle */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-[var(--divine-gold)] rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, -60],
-              opacity: [0, 0.4, 0],
-              scale: [0, 1, 0],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-              ease: "easeOut",
-            }}
-          />
-        ))}
-      </div>
 
       {/* Mihrab arch frame */}
       <motion.svg
@@ -85,15 +61,6 @@ export default function MihrabFrame() {
           transition={{ duration: 3, delay: 0.5, ease: "easeInOut" }}
         />
         
-        {/* Shimmer effect on main arch */}
-        <motion.rect
-          x="280" y="100" width="40" height="400"
-          fill="url(#shimmerGradient)"
-          opacity="0.5"
-          animate={{ x: [280, 480, 280] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          style={{ mixBlendMode: 'screen' }}
-        />
 
 
         {/* Base decorative elements */}
