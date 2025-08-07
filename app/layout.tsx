@@ -36,8 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Abdul Moiz Shahzad",
-    description: "Building with purpose - that man will only have what he has worked towards",
+    title: "that man will only have what he has worked towards",
+    description: "Quran 53:39",
     creator: "@MoizIbnYousaf",
   },
   icons: {
