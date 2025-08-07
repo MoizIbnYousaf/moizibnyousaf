@@ -182,9 +182,8 @@ export default function SingleView() {
                     transition={{ delay: 0.9, duration: 0.6 }}
                     whileHover={{ x: 5 }}
                   >
-                    <span className="text-[var(--whisper)]">When I was </span>
+                    <span className="text-[var(--whisper)]">TEDx speaker, age </span>
                     <span className="text-[var(--sacred-green)] font-bold">14</span>
-                    <span className="text-[var(--whisper)]">, spoke at TEDx</span>
                     <motion.span 
                       className="inline-block ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[var(--divine-gold)]"
                     >
