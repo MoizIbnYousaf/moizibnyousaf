@@ -22,38 +22,21 @@
 }
 
 html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100%;
 }
 
 body {
   background: var(--pure);
   color: var(--void);
   font-family: var(--font-sans);
-  overflow-x: hidden;
-  min-height: 100vh;
+  overflow: hidden;
+  height: 100%;
 }
 
 ::selection {
   background: var(--sacred-green);
   color: var(--pure);
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--pure);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--soft-gray);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--whisper);
 }
 
 @layer utilities {

@@ -1,32 +1,16 @@
-import HeroVerse from "@/components/HeroVerse";
-import Journey from "@/components/Journey";
-import Contact from "@/components/Contact";
-import EffortMeter from "@/components/EffortMeter";
+"use client";
+
+import { useState } from "react";
 import GeometricBackground from "@/components/GeometricBackground";
-import SmoothScroll from "@/components/SmoothScroll";
+import SingleView from "@/components/SingleView";
 
 export default function Home() {
   return (
-    <SmoothScroll>
-      <div className="relative min-h-screen">
-        {/* Background elements */}
-        <GeometricBackground />
-        
-        {/* Effort meter - fixed on right */}
-        <EffortMeter />
-        
-        {/* Main content */}
-        <main className="relative z-10">
-          {/* Hero section with the verse */}
-          <HeroVerse />
-          
-          {/* Journey section */}
-          <Journey />
-          
-          {/* Contact section */}
-          <Contact />
-        </main>
-      </div>
-    </SmoothScroll>
+    <div className="relative h-screen w-screen overflow-hidden">
+      <GeometricBackground />
+      <main className="relative z-10 h-full">
+        <SingleView />
+      </main>
+    </div>
   );
 }
