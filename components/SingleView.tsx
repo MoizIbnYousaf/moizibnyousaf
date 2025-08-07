@@ -88,8 +88,7 @@ export default function SingleView() {
               <motion.div
                 animate={{
                   scale: [0, 1, 1.2, 0],
-                  opacity: [0, 0.15, 0.2, 0],
-                  filter: ["blur(0px)", "blur(0px)", "blur(2px)", "blur(10px)"],
+                  opacity: [0, 0.3, 0.4, 0],
                 }}
                 transition={{
                   duration: 12,
@@ -98,7 +97,7 @@ export default function SingleView() {
                   ease: "easeInOut",
                 }}
               >
-                <LegoBlock size={block.size} opacity={0.05} />
+                <LegoBlock size={block.size * 2} color="#2C5530" opacity={0.3} />
               </motion.div>
             </motion.div>
           ))}
@@ -122,11 +121,12 @@ export default function SingleView() {
               {showLegoTransform && (
                 <motion.div
                   className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-                  initial={{ opacity: 1 }}
-                  animate={{ opacity: 0 }}
-                  transition={{ delay: 1.5, duration: 0.5 }}
+                  style={{ zIndex: 10 }}
+                  initial={{ opacity: 1, scale: 1 }}
+                  animate={{ opacity: 0, scale: 1.5 }}
+                  transition={{ delay: 1.8, duration: 0.8 }}
                 >
-                  <LegoBlock size={60} color="var(--sacred-green)" opacity={0.6} glowing />
+                  <LegoBlock size={80} color="#2C5530" opacity={1} glowing />
                 </motion.div>
               )}
 

@@ -12,8 +12,8 @@ interface LegoBlockProps {
 }
 
 export default function LegoBlock({ 
-  size = 20, 
-  color = "var(--sacred-green)", 
+  size = 40, 
+  color = "#2C5530", 
   opacity = 1,
   delay = 0,
   className = "",
@@ -24,51 +24,44 @@ export default function LegoBlock({
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity }}
       transition={{ delay, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-      className={`absolute ${className}`}
+      className={className}
       style={{
         width: size,
         height: size,
-        perspective: "1000px",
+        position: "absolute",
       }}
     >
-      <motion.div
-        className="relative w-full h-full"
+      {/* Main block body */}
+      <div
         style={{
+          width: "100%",
+          height: "100%",
+          background: `linear-gradient(135deg, ${color}88, ${color}CC)`,
+          border: `2px solid ${color}`,
+          borderRadius: "4px",
+          boxShadow: glowing 
+            ? `0 0 40px ${color}88, 0 4px 20px rgba(0,0,0,0.2)` 
+            : `0 4px 15px rgba(0,0,0,0.1)`,
+          position: "relative",
+          transform: "rotateX(-20deg) rotateY(25deg)",
           transformStyle: "preserve-3d",
-          transform: "rotateX(-30deg) rotateY(45deg)",
-        }}
-        animate={{
-          rotateY: [45, 50, 45],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
         }}
       >
-        {/* LEGO Block Faces */}
+        {/* Top stud */}
         <div
-          className="absolute inset-0 rounded-sm"
           style={{
-            background: `linear-gradient(135deg, ${color}33, ${color}66)`,
-            border: `2px solid ${color}`,
-            backdropFilter: "blur(10px)",
-            boxShadow: glowing ? `0 0 30px ${color}88` : `0 2px 10px ${color}33`,
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: size * 0.3,
+            height: size * 0.3,
+            borderRadius: "50%",
+            background: color,
+            boxShadow: `inset 0 2px 4px rgba(0,0,0,0.3)`,
           }}
         />
-        
-        {/* Top studs */}
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-          <div
-            className="w-3 h-3 rounded-full"
-            style={{
-              background: color,
-              opacity: 0.8,
-              boxShadow: `0 -2px 4px ${color}66`,
-            }}
-          />
-        </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }
