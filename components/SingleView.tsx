@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import IslamicFrame from "./IslamicFrame";
 
 export default function SingleView() {
   const [showContent, setShowContent] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
+  const [hoveredMilestone, setHoveredMilestone] = useState<number | null>(null);
   
 
   useEffect(() => {
@@ -150,11 +152,12 @@ export default function SingleView() {
 
             {/* Main centered content */}
             <div className="flex-1 flex items-center justify-center px-8">
+              <IslamicFrame className="w-full max-w-2xl">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-center max-w-md w-full"
+                className="text-center max-w-md w-full mx-auto py-12 px-8"
               >
                 {/* Name */}
                 <motion.h1
@@ -162,7 +165,7 @@ export default function SingleView() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
                   className="text-7xl md:text-8xl font-light text-[var(--void)] mb-3 tracking-tight relative"
-                  style={{ fontWeight: 300 }}
+                  style={{ fontWeight: 200 }}
                 >
                   <motion.span
                     initial={{ clipPath: "inset(100% 0 0 0)" }}
@@ -178,7 +181,7 @@ export default function SingleView() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.7, duration: 0.8 }}
                   className="text-[var(--whisper)] text-xl mb-16"
-                  style={{ letterSpacing: '0.05em' }}
+                  style={{ letterSpacing: '0.15em' }}
                 >
                   Abdul Moiz Shahzad
                 </motion.p>
@@ -188,51 +191,74 @@ export default function SingleView() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8, duration: 0.8 }}
-                  className="space-y-4 mb-16"
+                  className="space-y-5 mb-16"
                 >
                   <motion.div 
-                    className="text-[var(--whisper)] text-lg"
+                    className="text-[var(--whisper)] text-lg cursor-default transition-all duration-300"
                     initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
+                    animate={{ x: hoveredMilestone === 0 ? 5 : 0, opacity: 1 }}
                     transition={{ delay: 0.9, duration: 0.6 }}
+                    onMouseEnter={() => setHoveredMilestone(0)}
+                    onMouseLeave={() => setHoveredMilestone(null)}
+                    whileHover={{ color: "var(--void)" }}
                   >
                     <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ delay: 1, duration: 0.3 }}
+                      className="text-[var(--sacred-green)] font-bold inline-block text-2xl"
+                      animate={{ 
+                        scale: hoveredMilestone === 0 ? 1.2 : 1,
+                        rotate: hoveredMilestone === 0 ? [0, -5, 5, 0] : 0
+                      }}
+                      transition={{ duration: 0.3 }}
                     >
                       14
-                    </motion.span> — Spoke at TEDx
+                    </motion.span>
+                    <span className="ml-3">Spoke at TEDx</span>
                   </motion.div>
                   
                   <motion.div 
-                    className="text-[var(--whisper)] text-lg"
+                    className="text-[var(--whisper)] text-lg cursor-default transition-all duration-300"
                     initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
+                    animate={{ x: hoveredMilestone === 1 ? 5 : 0, opacity: 1 }}
                     transition={{ delay: 1, duration: 0.6 }}
+                    onMouseEnter={() => setHoveredMilestone(1)}
+                    onMouseLeave={() => setHoveredMilestone(null)}
+                    whileHover={{ color: "var(--void)" }}
                   >
                     <motion.span 
-                      className="text-[var(--sacred-green)] font-bold inline-block"
-                      animate={{ rotate: [0, 5, 0] }}
-                      transition={{ delay: 1.1, duration: 0.3 }}
+                      className="text-[var(--sacred-green)] font-bold inline-block text-2xl"
+                      animate={{ 
+                        scale: hoveredMilestone === 1 ? 1.2 : 1,
+                        rotate: hoveredMilestone === 1 ? [0, 360] : 0
+                      }}
+                      transition={{ duration: 0.5 }}
                     >
                       💻
-                    </motion.span> — Self-taught coder
+                    </motion.span>
+                    <span className="ml-3">Self-taught coder</span>
                   </motion.div>
                   
                   <motion.div 
-                    className="text-[var(--whisper)] text-lg"
+                    className="text-[var(--whisper)] text-lg cursor-default transition-all duration-300"
                     initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
+                    animate={{ x: hoveredMilestone === 2 ? 5 : 0, opacity: 1 }}
                     transition={{ delay: 1.1, duration: 0.6 }}
+                    onMouseEnter={() => setHoveredMilestone(2)}
+                    onMouseLeave={() => setHoveredMilestone(null)}
+                    whileHover={{ color: "var(--void)" }}
                   >
                     <motion.span 
                       className="text-[var(--sacred-green)] font-bold inline-block"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ delay: 1.2, duration: 0.3 }}
+                      animate={{ 
+                        scale: hoveredMilestone === 2 ? [1, 1.3, 1.2] : 1,
+                      }}
+                      transition={{ duration: 0.3 }}
+                      style={{ 
+                        textShadow: hoveredMilestone === 2 ? "0 0 20px rgba(44, 85, 48, 0.5)" : "none"
+                      }}
                     >
                       NOW
-                    </motion.span> — Building ventures
+                    </motion.span>
+                    <span className="ml-3">Building ventures</span>
                   </motion.div>
                 </motion.div>
 
@@ -245,7 +271,7 @@ export default function SingleView() {
                 >
                   <button
                     onClick={copyEmail}
-                    className="group relative text-xl text-[var(--sacred-green)] hover:text-[var(--divine-gold)] transition-all duration-300 hover:tracking-wide"
+                    className="group relative text-lg font-mono text-[var(--sacred-green)] hover:text-[var(--divine-gold)] transition-all duration-300"
                   >
                     <span className="relative">
                       moizibnyousaf@gmail.com
@@ -316,6 +342,7 @@ export default function SingleView() {
                   </a>
                 </motion.div>
               </motion.div>
+              </IslamicFrame>
             </div>
           </motion.div>
         )}
