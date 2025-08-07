@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
+import LegoBlock from "./LegoBlock";
 
 export default function SingleView() {
   const [showContent, setShowContent] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
+  const [showLegoTransform, setShowLegoTransform] = useState(true);
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -15,7 +17,8 @@ export default function SingleView() {
   const backgroundY = useTransform(mouseY, [0, 1000], [0, 50]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsRevealed(true), 500);
+    const timer = setTimeout(() => setIsRevealed(true), 800);
+    const transformTimer = setTimeout(() => setShowLegoTransform(false), 3000);
     const contentTimer = setTimeout(() => setShowContent(true), 3500);
     
     const handleMouseMove = (e: MouseEvent) => {
@@ -23,23 +26,28 @@ export default function SingleView() {
       mouseY.set(e.clientY);
     };
     
-    window.addEventListener("mousemove", handleMouseMove);
+    if (typeof window !== 'undefined') {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
     
     return () => {
       clearTimeout(timer);
+      clearTimeout(transformTimer);
       clearTimeout(contentTimer);
-      window.removeEventListener("mousemove", handleMouseMove);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener("mousemove", handleMouseMove);
+      }
     };
   }, [mouseX, mouseY]);
 
   const arabicLetters = [
-    { char: "وَ", delay: 0 },
-    { char: "أَن", delay: 0.1 },
-    { char: "لَّيْسَ", delay: 0.2 },
-    { char: "لِلْإِنسَانِ", delay: 0.3 },
-    { char: "إِلَّا", delay: 0.4 },
-    { char: "مَا", delay: 0.5 },
-    { char: "سَعَىٰ", delay: 0.6 },
+    { char: "وَ", delay: 0.3 },
+    { char: "أَن", delay: 0.4 },
+    { char: "لَّيْسَ", delay: 0.5 },
+    { char: "لِلْإِنسَانِ", delay: 0.6 },
+    { char: "إِلَّا", delay: 0.7 },
+    { char: "مَا", delay: 0.8 },
+    { char: "سَعَىٰ", delay: 0.9 },
   ];
 
   const socialLinks = [
@@ -54,40 +62,75 @@ export default function SingleView() {
     setTimeout(() => setEmailCopied(false), 2000);
   };
 
+  // Background LEGO lifecycle blocks
+  const backgroundBlocks = [
+    { x: "10%", y: "20%", delay: 0, size: 15 },
+    { x: "80%", y: "30%", delay: 2, size: 20 },
+    { x: "20%", y: "70%", delay: 4, size: 18 },
+    { x: "70%", y: "60%", delay: 6, size: 16 },
+    { x: "50%", y: "40%", delay: 8, size: 14 },
+  ];
+
   return (
     <div className="h-screen w-screen flex flex-col relative overflow-hidden">
-      {/* Islamic Geometric Background Pattern */}
-      <motion.div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          x: backgroundX,
-          y: backgroundY,
-        }}
-      >
-        <svg className="w-full h-full" viewBox="0 0 800 800">
-          <pattern id="islamic-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-            <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" fill="none" stroke="var(--sacred-green)" strokeWidth="0.5"/>
-            <circle cx="50" cy="50" r="20" fill="none" stroke="var(--sacred-green)" strokeWidth="0.5"/>
-            <path d="M30,30 L70,70 M70,30 L30,70" stroke="var(--sacred-green)" strokeWidth="0.5"/>
-          </pattern>
-          <rect width="100%" height="100%" fill="url(#islamic-pattern)" />
-        </svg>
-      </motion.div>
+      {/* Background LEGO Lifecycle - Stage 3: Continuous Return */}
+      {showContent && (
+        <div className="absolute inset-0 pointer-events-none">
+          {backgroundBlocks.map((block, i) => (
+            <motion.div
+              key={i}
+              className="absolute"
+              style={{ left: block.x, top: block.y }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: block.delay }}
+            >
+              <motion.div
+                animate={{
+                  scale: [0, 1, 1.2, 0],
+                  opacity: [0, 0.05, 0.08, 0],
+                  filter: ["blur(0px)", "blur(0px)", "blur(2px)", "blur(10px)"],
+                }}
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  delay: block.delay,
+                  ease: "easeInOut",
+                }}
+              >
+                <LegoBlock size={block.size} opacity={0.05} />
+              </motion.div>
+            </motion.div>
+          ))}
+        </div>
+      )}
 
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-green-50/5 pointer-events-none" />
 
       <AnimatePresence mode="wait">
         {!showContent ? (
-          // Initial verse animation - full screen
+          // Stage 1: Creation - Single Block to Verse
           <motion.div
             key="verse"
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.8 }}
             className="flex-1 flex items-center justify-center"
           >
-            <div className="text-center px-4">
-              {/* Arabic verse with breathing animation */}
+            <div className="text-center px-4 relative">
+              {/* Initial LEGO Block - The Drop */}
+              {showLegoTransform && (
+                <motion.div
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  initial={{ opacity: 1 }}
+                  animate={{ opacity: 0 }}
+                  transition={{ delay: 1.5, duration: 0.5 }}
+                >
+                  <LegoBlock size={40} color="var(--sacred-green)" opacity={0.3} glowing />
+                </motion.div>
+              )}
+
+              {/* Arabic verse emerging from blocks */}
               <motion.div 
                 className="mb-8"
                 animate={{ 
@@ -126,7 +169,7 @@ export default function SingleView() {
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5, duration: 0.8 }}
+                transition={{ delay: 2, duration: 0.8 }}
                 className="text-[var(--whisper)] text-lg md:text-xl max-w-2xl mx-auto mb-4"
               >
                 that man will only have what he has worked towards
@@ -136,7 +179,7 @@ export default function SingleView() {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2, duration: 0.8 }}
+                transition={{ delay: 2.5, duration: 0.8 }}
                 className="text-[var(--whisper)] text-sm opacity-60"
               >
                 53:39
@@ -144,7 +187,7 @@ export default function SingleView() {
             </div>
           </motion.div>
         ) : (
-          // Main content - single centered column with enhanced design
+          // Stage 2: Life/Test - Building with Blocks
           <motion.div
             key="content"
             initial={{ opacity: 0 }}
@@ -177,7 +220,7 @@ export default function SingleView() {
               </div>
             </motion.header>
 
-            {/* Main centered content with golden ratio spacing */}
+            {/* Main centered content - Stage 2: Building Life */}
             <div className="flex-1 flex items-center justify-center px-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -185,50 +228,91 @@ export default function SingleView() {
                 transition={{ delay: 0.4, duration: 0.8 }}
                 className="text-center max-w-md w-full"
               >
-                {/* Name with enhanced typography */}
+                {/* Name with LEGO build effect */}
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="text-7xl md:text-8xl font-light text-[var(--void)] mb-3 tracking-tight"
+                  className="text-7xl md:text-8xl font-light text-[var(--void)] mb-3 tracking-tight relative"
                   style={{ fontWeight: 300 }}
                 >
-                  Moiz
+                  <motion.span
+                    initial={{ clipPath: "inset(100% 0 0 0)" }}
+                    animate={{ clipPath: "inset(0 0 0 0)" }}
+                    transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+                  >
+                    Moiz
+                  </motion.span>
                 </motion.h1>
                 
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6, duration: 0.8 }}
+                  transition={{ delay: 0.7, duration: 0.8 }}
                   className="text-[var(--whisper)] text-xl mb-16"
                   style={{ letterSpacing: '0.05em' }}
                 >
                   Abdul Moiz Shahzad
                 </motion.p>
 
-                {/* Milestones with golden ratio spacing */}
+                {/* Milestones with LEGO building animation */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7, duration: 0.8 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8, duration: 0.8 }}
                   className="space-y-4 mb-16"
                 >
-                  <div className="text-[var(--whisper)] text-lg">
-                    <span className="text-[var(--sacred-green)] font-bold">14</span> — Spoke at TEDx
-                  </div>
-                  <div className="text-[var(--whisper)] text-lg">
-                    <span className="text-[var(--sacred-green)] font-bold">💻</span> — Self-taught coder
-                  </div>
-                  <div className="text-[var(--whisper)] text-lg">
-                    <span className="text-[var(--sacred-green)] font-bold">NOW</span> — Building ventures
-                  </div>
+                  <motion.div 
+                    className="text-[var(--whisper)] text-lg"
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.9, duration: 0.6 }}
+                  >
+                    <motion.span 
+                      className="text-[var(--sacred-green)] font-bold inline-block"
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ delay: 1, duration: 0.3 }}
+                    >
+                      14
+                    </motion.span> — Spoke at TEDx
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="text-[var(--whisper)] text-lg"
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 1, duration: 0.6 }}
+                  >
+                    <motion.span 
+                      className="text-[var(--sacred-green)] font-bold inline-block"
+                      animate={{ rotate: [0, 5, 0] }}
+                      transition={{ delay: 1.1, duration: 0.3 }}
+                    >
+                      💻
+                    </motion.span> — Self-taught coder
+                  </motion.div>
+                  
+                  <motion.div 
+                    className="text-[var(--whisper)] text-lg"
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 1.1, duration: 0.6 }}
+                  >
+                    <motion.span 
+                      className="text-[var(--sacred-green)] font-bold inline-block"
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ delay: 1.2, duration: 0.3 }}
+                    >
+                      NOW
+                    </motion.span> — Building ventures
+                  </motion.div>
                 </motion.div>
 
                 {/* Email with copy functionality */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8, duration: 0.8 }}
+                  transition={{ delay: 1.2, duration: 0.8 }}
                   className="mb-10"
                 >
                   <button
@@ -252,19 +336,22 @@ export default function SingleView() {
                   </button>
                 </motion.div>
 
-                {/* Social links with magnetic hover effect */}
+                {/* Social links */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.9, duration: 0.8 }}
+                  transition={{ delay: 1.3, duration: 0.8 }}
                   className="flex justify-center gap-6 mb-10"
                 >
-                  {socialLinks.map((link) => (
+                  {socialLinks.map((link, i) => (
                     <motion.a
                       key={link.name}
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 1.4 + i * 0.1, duration: 0.3 }}
                       whileHover={{ scale: 1.2, rotate: 5 }}
                       whileTap={{ scale: 0.9 }}
                       className="relative w-12 h-12 rounded-full border border-[var(--soft-gray)] flex items-center justify-center hover:border-[var(--sacred-green)] hover:bg-[var(--sacred-green)] hover:text-white transition-all duration-300 group"
@@ -275,11 +362,11 @@ export default function SingleView() {
                   ))}
                 </motion.div>
 
-                {/* TEDx link with enhanced hover */}
+                {/* TEDx link */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 1, duration: 0.8 }}
+                  transition={{ delay: 1.5, duration: 0.8 }}
                 >
                   <a
                     href="https://www.youtube.com/watch?v=aQSYLruVxeE"
