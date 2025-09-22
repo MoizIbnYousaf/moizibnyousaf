@@ -196,7 +196,7 @@ export default function SingleView() {
                     <span className="text-[var(--sacred-green)] font-bold inline-block">
                       💻
                     </span>
-                    <span className="ml-3">Self-taught coder</span>
+                    <span className="ml-3">Self-taught SWE</span>
                   </motion.div>
                   
                   <motion.div 
