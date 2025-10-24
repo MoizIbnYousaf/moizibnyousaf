@@ -1,8 +1,8 @@
 <h1 align="center">👋 Hi, I'm Moiz Ibn Yousaf</h1>
-<h3 align="center">Founder & Principal Developer — <a href="https://www.halaali.app" target="_blank">Halaali</a></h3>
+<h3 align="center">Founder & Principal Developer <a href="https://www.halaali.app" target="_blank">Halaali</a></h3>
 
 <p align="center">
-  <em>Building the Muslim Super App —blending faith, design, and technology into one purposeful ecosystem.</em>
+  <em>Building the Muslim Super App blending faith, design, and technology into one purposeful ecosystem.</em>
 </p>
 ---
 
