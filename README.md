@@ -1,13 +1,8 @@
 # Hi, I'm Moiz
 
-I'm a self ftaught software engineer and entrepreneur based in Toronto. As the founder and principal developer of **Halaali**—a Muslim super app—I build tools to streamline halal dining and related services. What began as a personal need for halal options has evolved into a mission to make halal living more accessible through technology.
-
+I'm a self taught software engineer and the founder and principal developer of **Halaali**—a Muslim super app—
 ## About Halaali
-
-- **Halaali** curates halal restaurants, food trucks and markets worldwide.
-- It is community‭‑driven: users contribute reviews, favourites and guides.
-- I am currently refining the user experience and releasing features that enhance everyday utility.
-
+- **Halaali** one stop shop for muslims
 ## Technologies I've Learned
 
 | Category | Technologies |
