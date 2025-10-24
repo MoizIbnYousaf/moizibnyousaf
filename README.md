@@ -14,11 +14,7 @@
 ### 🤌 Projects
 
 #### 🌙 [Halaali App](https://halaali.app)  
-Discover verified halal places, exclusive deals, and build trust in the halal economy.
-
-#### 🥖 [Syntera Platform](https://syntera.xyz)  
-Connecting investors with small‑medium enterprises via blockchain transparency.
-
+the muslim lifestyle superapp
 ---
 
 ### 📊 My GitHub at a Glance
