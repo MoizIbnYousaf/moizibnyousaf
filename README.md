@@ -5,8 +5,7 @@
   <em>Building the Muslim Super App — blending faith, design, and technology into one purposeful ecosystem.</em>
 </p>
 <p align="center">
-  <a href="https://visitor-badge.glitch.me/badge?page_id=MoizIbnYousaf" target="_blank"><img src="https://visitor-badge.glitch.me/badge?page_id=MoizIbnYousaf&left_color=gray&right_color=green" alt="Visitor Count"/></a>
-  <a   alt="GitHub Followers"/></a>
+  <a href="https://visitor-badge.glitch.me/badge?page_id=MoizIbnYousaf" target="_blank"><img src="https://visitor-badge.glitch.me/badge?page_id=MoizIbnYousaf&left_color=gray&right_color=green" alt="Visitor Count"/></a
 </p>
 
 ---
