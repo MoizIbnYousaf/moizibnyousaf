@@ -2,10 +2,11 @@
 <h3 align="center">Founder &amp; Principal Developer — <a href="https://www.halaali.app" target="_blank">Halaali</a></h3>
 
 <p align="center">
-  <em>Building the Muslim Super App — blending faith, design, and technology into one purposeful ecosystem.</em>
+  <em>Building the Muslim Super App : blending faith, design, and technology into one purposeful ecosystem.</em>
 </p>
 <p align="center">
-  <a href="https://visitor-badge.glitch.me/badge?page_id=MoizIbnYousaf" target="_blank"><img src="https://visitor-badge.glitch.me/badge?page_id=MoizIbnYousaf&left_color=gray&right_color=green" alt="Visitor Count"/></a
+  <a href="https://github.com/MoizIbnYousaf?tab=followers" target="_blank"><img src="https://img.shields.io/github/followers/MoizIbnYousaf?label=Followers&style=social" alt="GitHub Followers"/></a>
+</p>
 </p>
 
 ---
