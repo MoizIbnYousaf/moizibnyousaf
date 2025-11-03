@@ -6,7 +6,7 @@
 </p>
 <p align="center">
   <a href="https://visitor-badge.glitch.me/badge?page_id=MoizIbnYousaf" target="_blank"><img src="https://visitor-badge.glitch.me/badge?page_id=MoizIbnYousaf&left_color=gray&right_color=green" alt="Visitor Count"/></a>
-  <a  target="_blank"><img src="https://img.shields.io/github/followers/MoizIbnYousaf?label=Followers&style=social" alt="GitHub Followers"/></a>
+  <a   alt="GitHub Followers"/></a>
 </p>
 
 ---
