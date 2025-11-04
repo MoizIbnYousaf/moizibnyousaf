@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import MihrabFrame from "./MihrabFrame";
+import Image from "next/image";
 
 export default function SingleView() {
   const [showContent, setShowContent] = useState(false);
@@ -258,6 +259,38 @@ export default function SingleView() {
                       <span className="text-sm font-medium">{link.icon}</span>
                     </motion.a>
                   ))}
+                </motion.div>
+
+                {/* Halaali Logo */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.7, duration: 0.8 }}
+                  className="mt-16 flex justify-center"
+                >
+                  <motion.a
+                    href="https://www.halaali.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative block"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="relative w-24 h-24 rounded-2xl overflow-hidden">
+                      {/* Gold glow effect */}
+                      <div className="absolute inset-0 rounded-2xl bg-[var(--divine-gold)] opacity-0 hover:opacity-30 blur-xl transition-opacity duration-500" />
+                      <div className="absolute inset-0 rounded-2xl shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:shadow-[0_0_50px_rgba(212,175,55,0.7)] transition-shadow duration-500" />
+                      
+                      {/* Logo image */}
+                      <Image
+                        src="/halaali-logo.png"
+                        alt="Halaali"
+                        width={96}
+                        height={96}
+                        className="relative z-10 rounded-2xl"
+                      />
+                    </div>
+                  </motion.a>
                 </motion.div>
 
               </motion.div>
