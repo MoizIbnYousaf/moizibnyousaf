@@ -280,7 +280,7 @@ export default function SingleView() {
                     <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-[var(--divine-gold)] via-yellow-400 to-[var(--divine-gold)] opacity-60 blur-2xl group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
                     <div className="absolute -inset-2 rounded-3xl bg-[var(--divine-gold)] opacity-50 blur-xl group-hover:opacity-80 transition-opacity duration-500" />
                     
-                    <div className="relative w-24 h-24 rounded-2xl overflow-hidden shadow-[0_0_40px_rgba(212,175,55,0.6)] group-hover:shadow-[0_0_60px_rgba(212,175,55,1)] transition-shadow duration-500">
+                    <div className="relative w-24 h-24 rounded-2xl shadow-[0_0_40px_rgba(212,175,55,0.6)] group-hover:shadow-[0_0_60px_rgba(212,175,55,1)] transition-shadow duration-500">
                       {/* Logo image */}
                       <Image
                         src="/halaali-logo.png"
