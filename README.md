@@ -15,7 +15,7 @@
 💻 Self‑taught Software Engineer passionate about real‑world impact.  
 🚀 Currently building **Halaali**, a super app for halal discovery, dining, and lifestyle.  
 🏆 Focused on creating products that feel *human, elegant, and useful.*  
-🤝 Open to collaboration and new opportunities — feel free to reach out!
+🤝 Open to collaboration and new opportunities  feel free to reach out!
 
 ---
 
