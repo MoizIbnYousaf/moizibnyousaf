@@ -273,12 +273,24 @@ export default function SingleView() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative block group cursor-pointer"
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
+                    whileHover={{ scale: 1.08, y: -2 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                   >
-                    {/* Outer glow layers */}
-                    <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-[var(--divine-gold)] via-yellow-400 to-[var(--divine-gold)] opacity-60 blur-2xl group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
-                    <div className="absolute -inset-2 rounded-3xl bg-[var(--divine-gold)] opacity-50 blur-xl group-hover:opacity-80 transition-opacity duration-500" />
+                    {/* Subtle ambient glow - always present */}
+                    <motion.div 
+                      className="absolute -inset-3 rounded-full bg-[var(--divine-gold)] blur-2xl"
+                      animate={{ 
+                        opacity: [0.15, 0.25, 0.15],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    />
+                    
+                    {/* Stronger glow on hover */}
+                    <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-yellow-300 via-[var(--divine-gold)] to-yellow-300 opacity-0 group-hover:opacity-40 blur-2xl transition-opacity duration-500" />
                     
                     <div className="relative w-24 h-24">
                       {/* Logo image */}
@@ -287,7 +299,7 @@ export default function SingleView() {
                         alt="Halaali"
                         width={96}
                         height={96}
-                        className="relative z-10"
+                        className="relative z-10 transition-all duration-300 group-hover:brightness-110"
                       />
                     </div>
                   </motion.a>
