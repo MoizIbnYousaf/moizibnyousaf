@@ -266,7 +266,7 @@ export default function SingleView() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.7, duration: 0.8 }}
-                  className="mt-16 flex justify-center"
+                  className="mt-24 flex justify-center"
                 >
                   <motion.a
                     href="https://www.halaali.app/"
@@ -280,14 +280,14 @@ export default function SingleView() {
                     <div className="absolute -inset-4 rounded-3xl bg-gradient-to-r from-[var(--divine-gold)] via-yellow-400 to-[var(--divine-gold)] opacity-60 blur-2xl group-hover:opacity-100 transition-opacity duration-500 animate-pulse" />
                     <div className="absolute -inset-2 rounded-3xl bg-[var(--divine-gold)] opacity-50 blur-xl group-hover:opacity-80 transition-opacity duration-500" />
                     
-                    <div className="relative w-24 h-24 rounded-2xl shadow-[0_0_40px_rgba(212,175,55,0.6)] group-hover:shadow-[0_0_60px_rgba(212,175,55,1)] transition-shadow duration-500">
+                    <div className="relative w-24 h-24">
                       {/* Logo image */}
                       <Image
                         src="/halaali-logo.png"
                         alt="Halaali"
                         width={96}
                         height={96}
-                        className="relative z-10 rounded-2xl"
+                        className="relative z-10"
                       />
                     </div>
                   </motion.a>
