@@ -14,6 +14,16 @@
 ### 🤠 About Me  
 💻 Self‑taught Software Engineer passionate about real‑world impact.  
 🚀 Currently building **Halaali**, a super app for halal discovery, dining, and lifestyle.  
+---
+### 📞 Connect with Me
+I love meeting new people and discussing exciting ideas. Feel free to reach out through any of the platforms below:
+
+- 🔗 [Website](https://www.moizibnyousaf.com)
+- 🕊️ [LinkedIn](https://www.linkedin.com/in/moizibnyousaf)
+- 🕊️ [Twitter/X](https://twitter.com/moizibnyousaf)
+- 🕊️ [Email](mailto:contact@moizibnyousaf.com)
+
+Thanks for visiting my profile! ✨
 🏆 Focused on creating products that feel *human, elegant, and useful.*  
 🤝 Open to collaboration and new opportunities  feel free to reach out!
 
