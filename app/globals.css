@@ -21,6 +21,15 @@
   box-sizing: border-box;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
 html {
   overflow: hidden;
   height: 100%;
