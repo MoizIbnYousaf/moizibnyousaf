@@ -1,36 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
   <defs>
-    <!-- Refined 4-stop gold gradient -->
     <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#E8C547"/>
-      <stop offset="30%" stop-color="#D4AF37"/>
-      <stop offset="70%" stop-color="#C5A028"/>
-      <stop offset="100%" stop-color="#E8C547"/>
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#F4E4BA" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.95"/>
     </linearGradient>
 
-    <!-- Shimmer that travels along the arch -->
-    <linearGradient id="shimmer" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="0">
-      <stop offset="0%" stop-color="#FFF8DC" stop-opacity="0">
-        <animate attributeName="offset" values="0;1" dur="4s" repeatCount="indefinite"/>
+    <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0">
+        <animate attributeName="offset" values="-1;1" dur="3s" repeatCount="indefinite"/>
       </stop>
-      <stop offset="5%" stop-color="#FFF8DC" stop-opacity="0.9">
-        <animate attributeName="offset" values="0.05;1.05" dur="4s" repeatCount="indefinite"/>
+      <stop offset="50%" stop-color="#FFF8E7" stop-opacity="0.8">
+        <animate attributeName="offset" values="-0.5;1.5" dur="3s" repeatCount="indefinite"/>
       </stop>
-      <stop offset="10%" stop-color="#FFF8DC" stop-opacity="0">
-        <animate attributeName="offset" values="0.1;1.1" dur="4s" repeatCount="indefinite"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0">
+        <animate attributeName="offset" values="0;2" dur="3s" repeatCount="indefinite"/>
       </stop>
     </linearGradient>
 
     <filter id="glow">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
-    <filter id="textGlow">
-      <feGaussianBlur stdDeviation="1" result="blur"/>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -42,117 +39,103 @@
         from { stroke-dashoffset: 1200; }
         to { stroke-dashoffset: 0; }
       }
-      @keyframes fadeInSimple {
+      @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
       }
-      @keyframes breathe {
-        0%, 100% { opacity: 0.12; }
-        50% { opacity: 0.25; }
-      }
       @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-3px); }
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-4px); }
       }
-
       .arch-outer {
         stroke-dasharray: 1200;
         stroke-dashoffset: 1200;
-        animation: drawArch 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation: drawArch 2.5s ease-out forwards;
       }
       .arch-inner {
         stroke-dasharray: 1200;
         stroke-dashoffset: 1200;
-        animation: drawArch 3s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+        animation: drawArch 2.5s ease-out 0.4s forwards;
       }
-      .arch-glow {
-        animation: breathe 4s ease-in-out infinite;
+      .arch-shimmer {
+        stroke-dasharray: 1200;
+        stroke-dashoffset: 1200;
+        animation: drawArch 2.5s ease-out forwards;
       }
       .name {
         opacity: 0;
-        animation: fadeInSimple 1.5s ease-out 1.5s forwards, float 6s ease-in-out 3s infinite;
+        animation: fadeIn 1.2s ease-out 1.2s forwards, float 6s ease-in-out 2.5s infinite;
       }
       .subtitle {
         opacity: 0;
-        animation: fadeInSimple 1.2s ease-out 2s forwards;
+        animation: fadeIn 1s ease-out 1.6s forwards;
       }
       .divider {
         opacity: 0;
-        animation: fadeInSimple 1s ease-out 2.3s forwards;
+        animation: fadeIn 1s ease-out 1.9s forwards;
       }
-      .info-1 { opacity: 0; animation: fadeInSimple 0.8s ease-out 2.5s forwards; }
-      .info-2 { opacity: 0; animation: fadeInSimple 0.8s ease-out 2.7s forwards; }
-      .info-3 { opacity: 0; animation: fadeInSimple 0.8s ease-out 2.9s forwards; }
+      .info-1 { opacity: 0; animation: fadeIn 0.8s ease-out 2.1s forwards; }
+      .info-2 { opacity: 0; animation: fadeIn 0.8s ease-out 2.3s forwards; }
+      .info-3 { opacity: 0; animation: fadeIn 0.8s ease-out 2.5s forwards; }
       .base-line {
         opacity: 0;
-        animation: fadeInSimple 1s ease-out 1s forwards;
+        animation: fadeIn 1s ease-out 0.8s forwards;
       }
     </style>
   </defs>
 
-  <!-- Breathing glow behind arch -->
-  <path
-    class="arch-glow"
-    d="M 200 450 L 200 190 Q 200 50, 400 20 Q 600 50, 600 190 L 600 450"
-    stroke="#D4AF37"
-    stroke-width="12"
-    fill="none"
-    filter="url(#glow)"
-  />
-
   <!-- Outer Mihrab Arch -->
   <path
     class="arch-outer"
-    d="M 200 450 L 200 190 Q 200 50, 400 20 Q 600 50, 600 190 L 600 450"
+    d="M 200 420 L 200 180 Q 200 50, 400 25 Q 600 50, 600 180 L 600 420"
     stroke="url(#goldGradient)"
-    stroke-width="2"
+    stroke-width="2.5"
     fill="none"
     filter="url(#glow)"
   />
 
   <!-- Shimmer overlay -->
   <path
-    d="M 200 450 L 200 190 Q 200 50, 400 20 Q 600 50, 600 190 L 600 450"
+    class="arch-shimmer"
+    d="M 200 420 L 200 180 Q 200 50, 400 25 Q 600 50, 600 180 L 600 420"
     stroke="url(#shimmer)"
     stroke-width="3"
     fill="none"
-    opacity="0.8"
+    opacity="0.6"
   />
 
   <!-- Inner Mihrab Arch -->
   <path
     class="arch-inner"
-    d="M 240 430 L 240 200 Q 240 80, 400 50 Q 560 80, 560 200 L 560 430"
+    d="M 240 400 L 240 190 Q 240 80, 400 55 Q 560 80, 560 190 L 560 400"
     stroke="url(#goldGradient)"
-    stroke-width="0.8"
+    stroke-width="1"
     fill="none"
-    opacity="0.35"
+    opacity="0.4"
   />
 
   <!-- Base line -->
-  <line class="base-line" x1="140" y1="450" x2="660" y2="450" stroke="url(#goldGradient)" stroke-width="1" opacity="0.4"/>
+  <line class="base-line" x1="150" y1="420" x2="650" y2="420" stroke="url(#goldGradient)" stroke-width="1.5" opacity="0.5"/>
 
   <!-- Corner flourishes -->
-  <path class="base-line" d="M 140 450 Q 170 420, 200 450" stroke="url(#goldGradient)" stroke-width="1.2" fill="none" opacity="0.5"/>
-  <path class="base-line" d="M 600 450 Q 630 420, 660 450" stroke="url(#goldGradient)" stroke-width="1.2" fill="none" opacity="0.5"/>
+  <path class="base-line" d="M 150 420 Q 175 395, 200 420" stroke="url(#goldGradient)" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path class="base-line" d="M 600 420 Q 625 395, 650 420" stroke="url(#goldGradient)" stroke-width="1.5" fill="none" opacity="0.6"/>
 
   <!-- Name with float -->
-  <text class="name" x="400" y="175" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="300" fill="#F5F5F4" font-size="76" filter="url(#textGlow)">Moiz</text>
+  <text class="name" x="400" y="170" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="300" fill="#F5F5F4" font-size="80" filter="url(#softGlow)">Moiz</text>
 
   <!-- Full Name -->
-  <text class="subtitle" x="400" y="220" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="300" fill="#9CA3AF" font-size="12" letter-spacing="0.35em">ABDUL MOIZ SHAHZAD</text>
+  <text class="subtitle" x="400" y="215" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-weight="300" fill="#A8A29E" font-size="13" letter-spacing="0.3em">ABDUL MOIZ SHAHZAD</text>
 
   <!-- Elegant divider -->
   <g class="divider">
-    <line x1="320" y1="242" x2="380" y2="242" stroke="url(#goldGradient)" stroke-width="0.5" opacity="0.5"/>
-    <circle cx="400" cy="242" r="1.5" fill="#D4AF37" opacity="0.6"/>
-    <line x1="420" y1="242" x2="480" y2="242" stroke="url(#goldGradient)" stroke-width="0.5" opacity="0.5"/>
+    <line x1="320" y1="235" x2="380" y2="235" stroke="url(#goldGradient)" stroke-width="0.5" opacity="0.5"/>
+    <circle cx="400" cy="235" r="2" fill="#D4AF37" opacity="0.6"/>
+    <line x1="420" y1="235" x2="480" y2="235" stroke="url(#goldGradient)" stroke-width="0.5" opacity="0.5"/>
   </g>
 
   <!-- Info lines -->
-  <text class="info-1" x="400" y="290" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" fill="#9CA3AF" font-size="16">
-    TEDx speaker, age <tspan fill="#22C55E" font-weight="600">14</tspan>
-  </text>
-  <text class="info-2" x="400" y="325" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" fill="#9CA3AF" font-size="16">Self-taught Software Engineer</text>
-  <text class="info-3" x="400" y="360" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" fill="#9CA3AF" font-size="16">Building ventures</text>
+  <text class="info-1" x="400" y="280" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" fill="#A8A29E" font-size="17">TEDx speaker, age <tspan fill="#22C55E" font-weight="600">14</tspan></text>
+  <text class="info-2" x="400" y="315" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" fill="#A8A29E" font-size="17">Self-taught Software Engineer</text>
+  <text class="info-3" x="400" y="350" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" fill="#A8A29E" font-size="17">Building ventures</text>
 </svg>

@@ -14,15 +14,15 @@
 
 <p align="center">
   <a href="https://x.com/MoizIbnYousaf">
-    <img src="https://img.shields.io/badge/-000000?style=flat-square&logo=x&logoColor=white" height="28" alt="X" />
+    <img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" height="28" alt="X" />
   </a>
-  &nbsp;&nbsp;
+  &nbsp;
   <a href="https://linkedin.com/in/abdul-moiz-shahzad-43242a277">
-    <img src="https://img.shields.io/badge/-000000?style=flat-square&logo=linkedin&logoColor=0A66C2" height="28" alt="LinkedIn" />
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" height="28" alt="LinkedIn" />
   </a>
-  &nbsp;&nbsp;
+  &nbsp;
   <a href="https://moizibnyousaf.com">
-    <img src="https://img.shields.io/badge/-000000?style=flat-square&logo=safari&logoColor=white" height="28" alt="Website" />
+    <img src="https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=safari&logoColor=white" height="28" alt="Website" />
   </a>
 </p>
 
