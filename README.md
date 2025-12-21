@@ -17,10 +17,6 @@
     <img src="https://img.shields.io/badge/-000000?style=flat-square&logo=x&logoColor=white" height="28" alt="X" />
   </a>
   &nbsp;&nbsp;
-  <a href="https://github.com/MoizIbnYousaf">
-    <img src="https://img.shields.io/badge/-000000?style=flat-square&logo=github&logoColor=white" height="28" alt="GitHub" />
-  </a>
-  &nbsp;&nbsp;
   <a href="https://linkedin.com/in/abdul-moiz-shahzad-43242a277">
     <img src="https://img.shields.io/badge/-000000?style=flat-square&logo=linkedin&logoColor=0A66C2" height="28" alt="LinkedIn" />
   </a>
