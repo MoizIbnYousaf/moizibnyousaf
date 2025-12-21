@@ -20,6 +20,13 @@
       </stop>
     </linearGradient>
 
+    <!-- Light beam gradient -->
+    <linearGradient id="silkyRay" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
     <!-- Glass pearl gradient -->
     <radialGradient id="glassPearl" cx="30%" cy="30%" r="70%">
       <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9"/>
@@ -27,6 +34,11 @@
       <stop offset="90%" stop-color="#D1D5DB" stop-opacity="0.4"/>
       <stop offset="100%" stop-color="#9CA3AF" stop-opacity="0.6"/>
     </radialGradient>
+
+    <!-- Mask for light beam -->
+    <mask id="archMask">
+      <path d="M 200 420 L 200 180 Q 200 50, 400 25 Q 600 50, 600 180 L 600 420 Z" fill="white"/>
+    </mask>
 
     <filter id="glow">
       <feGaussianBlur stdDeviation="3" result="blur"/>
@@ -44,7 +56,10 @@
       </feMerge>
     </filter>
 
-    <!-- Inner glow for pearl -->
+    <filter id="heavyBlur">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+
     <filter id="innerLight">
       <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
       <feComposite in="blur" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowDiff"/>
@@ -71,12 +86,16 @@
       }
       @keyframes pearlGrow {
         0% { transform: scale(0); opacity: 0; }
-        50% { transform: scale(1.2); opacity: 1; }
         100% { transform: scale(1); opacity: 1; }
       }
-      @keyframes pearlPulse {
-        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
-        50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(255,255,255,0.6)); }
+      @keyframes pearlShine {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.8; }
+      }
+      @keyframes infiniteSweep {
+        0% { transform: rotate(-20deg); opacity: 0.6; }
+        50% { transform: rotate(20deg); opacity: 1; }
+        100% { transform: rotate(-20deg); opacity: 0.6; }
       }
 
       .arch-outer {
@@ -98,12 +117,19 @@
         opacity: 0;
         animation: fadeIn 1s ease-out 0.8s forwards;
       }
+      .beam-source {
+        transform-origin: 400px 25px;
+        animation: infiniteSweep 8s ease-in-out infinite;
+      }
       .pearl {
         transform-origin: 400px 25px;
         opacity: 0;
-        transform: scale(0);
-        animation: pearlGrow 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s forwards,
-                   pearlPulse 4s ease-in-out 2.2s infinite;
+        animation: pearlGrow 1s ease-out 1.5s forwards;
+      }
+      .pearl-glow {
+        transform-origin: 400px 25px;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out 2s forwards, pearlShine 3s ease-in-out 2.5s infinite;
       }
       .name {
         opacity: 0;
@@ -122,6 +148,13 @@
       .info-3 { opacity: 0; animation: fadeIn 0.8s ease-out 2.4s forwards; }
     </style>
   </defs>
+
+  <!-- Light beam from pearl -->
+  <g mask="url(#archMask)" filter="url(#heavyBlur)">
+    <g class="beam-source">
+      <path d="M 400 25 L 550 450 L 250 450 Z" fill="url(#silkyRay)"/>
+    </g>
+  </g>
 
   <!-- Outer Mihrab Arch -->
   <path
@@ -160,16 +193,15 @@
   <path class="base-line" d="M 150 420 Q 175 395, 200 420" stroke="url(#goldGradient)" stroke-width="1.5" fill="none" opacity="0.6"/>
   <path class="base-line" d="M 600 420 Q 625 395, 650 420" stroke="url(#goldGradient)" stroke-width="1.5" fill="none" opacity="0.6"/>
 
-  <!-- Glassmorphic Pearl (grows after arch draws) -->
+  <!-- Pearl glow (behind pearl) -->
+  <circle class="pearl-glow" cx="400" cy="25" r="20" fill="#FFFFFF" opacity="0.3" filter="url(#softGlow)"/>
+
+  <!-- Glassmorphic Pearl -->
   <g class="pearl">
-    <!-- Solid base to hide arch line -->
     <circle cx="400" cy="25" r="12" fill="#F3F4F6"/>
-    <!-- Main glass body -->
     <circle cx="400" cy="25" r="12" fill="url(#glassPearl)" filter="url(#innerLight)"/>
-    <!-- Sharp reflection -->
     <path d="M 396 20 Q 400 18, 404 20" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" opacity="0.9"/>
     <circle cx="395" cy="21" r="1.5" fill="#FFF"/>
-    <!-- Outer rim -->
     <circle cx="400" cy="25" r="12" fill="none" stroke="#FFF" stroke-width="0.5" opacity="0.4"/>
   </g>
 
