@@ -140,10 +140,10 @@
     <circle cx="200" cy="300" r="1" class="p-slow" style="animation-delay: 3s;" />
   </g>
 
-  <!-- INFINITE BEAMS -->
-  <g mask="url(#archMask)" filter="url(#heavyBlur)">
+  <!-- INFINITE BEAMS - no mask, natural glow -->
+  <g filter="url(#heavyBlur)">
     <g class="beam-source">
-      <path d="M 400 25 L 600 500 L 200 500 Z" fill="url(#silkyRay)" />
+      <path d="M 400 25 L 550 400 L 250 400 Z" fill="url(#silkyRay)" />
     </g>
   </g>
 
