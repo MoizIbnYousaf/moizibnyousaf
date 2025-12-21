@@ -39,5 +39,7 @@
 <br/><br/>
 
 <div align="center">
-  <sub><em>"that man will only have what he has worked towards"</em> — 53:39</sub>
+  <a href="https://quran.com/an-najm/39">
+    <sub><em>"that man will only have what he has worked towards"</em> — 53:39</sub>
+  </a>
 </div>
