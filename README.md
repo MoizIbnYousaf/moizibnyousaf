@@ -42,8 +42,6 @@
 
 <div align="center">
   <a href="https://quran.com/an-najm/39">
-    <sub>وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ</sub>
-    <br/>
     <sub><em>"that man will only have what he has worked towards"</em></sub>
     <br/>
     <sup>— 53:39</sup>
