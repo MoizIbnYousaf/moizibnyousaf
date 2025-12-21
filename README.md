@@ -30,7 +30,7 @@
 
 <div align="center">
   <a href="https://halaali.app">
-    <img src="https://raw.githubusercontent.com/MoizIbnYousaf/moizibnyousaf/main/public/halaali-logo.png" alt="Halaali" width="60" />
+    <img src="halaali-logo.png" alt="Halaali" width="60" />
   </a>
   <br/><br/>
   <a href="https://halaali.app"><strong>Halaali</strong></a>
