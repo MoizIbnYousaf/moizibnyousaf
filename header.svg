@@ -20,10 +20,10 @@
       </stop>
     </linearGradient>
 
-    <!-- Light beam gradient -->
+    <!-- Light beam gradient - stronger -->
     <linearGradient id="silkyRay" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.25"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </linearGradient>
 
@@ -85,12 +85,12 @@
         50% { transform: translateY(-5px); }
       }
       @keyframes pearlGrow {
-        0% { transform: scale(0); opacity: 0; }
+        0% { transform: scale(0.1); opacity: 0.5; }
         100% { transform: scale(1); opacity: 1; }
       }
       @keyframes pearlShine {
-        0%, 100% { opacity: 0.4; }
-        50% { opacity: 0.8; }
+        0%, 100% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
       }
       @keyframes infiniteSweep {
         0% { transform: rotate(-20deg); opacity: 0.6; }
@@ -123,13 +123,12 @@
       }
       .pearl {
         transform-origin: 400px 25px;
-        opacity: 0;
-        animation: pearlGrow 1s ease-out 1.5s forwards;
+        animation: pearlGrow 1.5s ease-out 1.5s forwards;
       }
       .pearl-glow {
         transform-origin: 400px 25px;
         opacity: 0;
-        animation: fadeIn 0.5s ease-out 2s forwards, pearlShine 3s ease-in-out 2.5s infinite;
+        animation: fadeIn 1s ease-out 1.5s forwards, pearlShine 4s ease-in-out 3s infinite;
       }
       .name {
         opacity: 0;
@@ -194,7 +193,7 @@
   <path class="base-line" d="M 600 420 Q 625 395, 650 420" stroke="url(#goldGradient)" stroke-width="1.5" fill="none" opacity="0.6"/>
 
   <!-- Pearl glow (behind pearl) -->
-  <circle class="pearl-glow" cx="400" cy="25" r="20" fill="#FFFFFF" opacity="0.3" filter="url(#softGlow)"/>
+  <circle class="pearl-glow" cx="400" cy="25" r="25" fill="#FFFFFF" filter="url(#glow)"/>
 
   <!-- Glassmorphic Pearl -->
   <g class="pearl">
