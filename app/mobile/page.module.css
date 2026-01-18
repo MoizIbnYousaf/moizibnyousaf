@@ -73,15 +73,19 @@
   position: relative;
   z-index: 1;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1240px;
   padding: 72px 24px 120px;
 }
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: 32px;
-  align-items: end;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.9fr);
+  gap: 36px;
+  align-items: center;
+}
+
+.heroCopy {
+  padding-right: 12px;
 }
 
 .heroPanel {
@@ -97,7 +101,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
 .statCard {
@@ -124,10 +128,10 @@
 .flowRail {
   position: relative;
   margin-top: 28px;
-  border-radius: 22px;
+  border-radius: 24px;
   border: 1px solid var(--line);
   background: var(--card);
-  padding: 18px 18px;
+  padding: 20px 18px;
   display: flex;
   gap: 16px;
   align-items: stretch;
@@ -173,8 +177,89 @@
   flex-shrink: 0;
 }
 
+.dashboard {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: 24px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 28px;
+  align-self: start;
+  border-radius: 26px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 20px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+}
+
+.sidebarHeader {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.sidebarList {
+  display: grid;
+  gap: 12px;
+}
+
+.sidebarItem {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.sidebarBadge {
+  height: 32px;
+  width: 32px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-family: var(--font-display);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.sidebarCard {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.content {
+  display: grid;
+  gap: 22px;
+}
+
+.overviewGrid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.overviewCard {
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 20px 22px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.07);
+}
+
 .stageGrid {
-  margin-top: 32px;
   display: grid;
   gap: 22px;
 }
@@ -207,7 +292,20 @@
   padding: 16px;
   color: inherit;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.toolCard::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.18), transparent);
+  opacity: 0.6;
 }
 
 .toolCard:hover {
@@ -253,6 +351,19 @@
 
   .statGrid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: relative;
+    top: auto;
+  }
+
+  .overviewGrid {
+    grid-template-columns: 1fr;
   }
 }
 
