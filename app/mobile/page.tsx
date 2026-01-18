@@ -244,10 +244,9 @@ const principles = [
 ] as const;
 
 export default function MobileStackPage() {
+  const toolCount = stack.reduce((total, stage) => total + stage.tools.length, 0);
   return (
-    <div
-      className={`${syne.variable} ${sora.variable} ${styles.page} h-screen w-screen overflow-y-auto overscroll-y-contain`}
-    >
+    <div className={`${syne.variable} ${sora.variable} ${styles.page} w-full`}>
       <div className={styles.background} aria-hidden="true">
         <div className={styles.vignette} />
         <div className={styles.glowA} />
@@ -255,113 +254,108 @@ export default function MobileStackPage() {
         <div className={styles.grid} />
       </div>
 
-      <main className="relative z-10 mx-auto max-w-6xl px-6 pb-24 pt-16 md:pt-24">
-        <header className="max-w-3xl">
-          <p className={`${styles.kicker} ${styles.reveal}`} style={{ animationDelay: "0.05s" }}>
-            Mobile stack
-          </p>
-          <h1
-            className={`${styles.display} ${styles.reveal} mt-4 text-4xl font-semibold md:text-6xl`}
-            style={{ animationDelay: "0.12s" }}
-          >
-            The ultimate mobile app workflow, distilled.
-          </h1>
-          <p
-            className={`${styles.reveal} mt-5 text-lg text-[var(--muted)] md:text-xl`}
-            style={{ animationDelay: "0.2s" }}
-          >
-            A modern, Stripe-level stack from frontend to analytics. Keep every tool in sync,
-            start free, and scale smoothly.
-          </p>
-        </header>
-
-        <section className="mt-10">
-          <div className={styles.flowPanel}>
-            <ol className="grid gap-4 md:grid-cols-5">
-              {stack.map((item, index) => (
-                <li
-                  key={item.title}
-                  className={`${styles.reveal} relative z-10 flex items-start gap-3`}
-                  style={{ animationDelay: `${0.28 + index * 0.06}s` }}
-                >
-                  <span className={styles.flowBadge} style={{ "--accent": item.accent } as CSSProperties}>
-                    {item.step}
-                  </span>
-                  <div>
-                    <p className={`${styles.display} text-base`}>{item.title}</p>
-                    <p className="text-sm text-[var(--muted)]">{item.summary}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
+      <main className={styles.main}>
+        <section className={styles.hero}>
+          <div>
+            <p className={`${styles.kicker} ${styles.reveal}`} style={{ animationDelay: "0.05s" }}>
+              Mobile stack
+            </p>
+            <h1
+              className={`${styles.display} ${styles.reveal} mt-4 text-4xl font-semibold md:text-6xl`}
+              style={{ animationDelay: "0.12s" }}
+            >
+              The ultimate mobile app workflow, distilled.
+            </h1>
+            <p
+              className={`${styles.reveal} mt-5 text-lg text-[var(--muted)] md:text-xl`}
+              style={{ animationDelay: "0.2s" }}
+            >
+              A modern, Stripe-level stack from frontend to analytics. Keep every tool in sync,
+              start free, and scale smoothly.
+            </p>
           </div>
-        </section>
 
-        <section className="relative mt-16">
-          <div className={styles.timelineLine} aria-hidden="true" />
-          <div className="space-y-10">
-            {stack.map((section, index) => (
-              <article
-                key={section.title}
-                className={`relative pl-16 ${styles.reveal}`}
-                style={
-                  {
-                    "--accent": section.accent,
-                    animationDelay: `${0.4 + index * 0.08}s`,
-                  } as CSSProperties
-                }
-              >
-                <div className={styles.stepMarker}>{section.step}</div>
-                <div className={styles.sectionCard}>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className={styles.tag}>Stack Stage</span>
-                    <h2 className={`${styles.display} text-2xl md:text-3xl`}>{section.title}</h2>
-                  </div>
-                  <p className="mt-3 text-base text-[var(--muted)]">{section.detail}</p>
-
-                  <div className="mt-6 grid gap-4 md:grid-cols-2">
-                    {section.tools.map((tool) => (
-                      <a
-                        key={tool.name}
-                        href={tool.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={styles.toolCard}
-                      >
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <p className={`${styles.display} text-lg`}>{tool.name}</p>
-                            <p className="mt-1 text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
-                              {tool.label}
-                            </p>
-                          </div>
-                          {tool.tag ? <span className={styles.tag}>{tool.tag}</span> : null}
-                        </div>
-                        <p className="mt-3 text-sm text-[var(--muted)]">{tool.description}</p>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-16">
-          <div className={`${styles.sectionCard} ${styles.reveal}`} style={{ animationDelay: "0.82s" }}>
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <h2 className={`${styles.display} text-2xl md:text-3xl`}>Operating principles</h2>
-              <p className="text-sm text-[var(--muted)]">Start free. Ship fast. Measure everything.</p>
+          <div className={`${styles.heroPanel} ${styles.reveal}`} style={{ animationDelay: "0.26s" }}>
+            <div className="flex items-center justify-between">
+              <p className={styles.kicker}>Operating principles</p>
+              <span className={styles.tag}>Toolkit</span>
             </div>
-            <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <div className="mt-4 space-y-3">
               {principles.map((item) => (
-                <div key={item.title} className={styles.toolCard}>
-                  <p className={`${styles.display} text-lg`}>{item.title}</p>
-                  <p className="mt-2 text-sm text-[var(--muted)]">{item.description}</p>
+                <div key={item.title}>
+                  <p className={`${styles.display} text-base`}>{item.title}</p>
+                  <p className="text-sm text-[var(--muted)]">{item.description}</p>
                 </div>
               ))}
             </div>
+            <div className={styles.statGrid}>
+              <div className={styles.statCard}>
+                <p className={styles.statValue}>05</p>
+                <p className={styles.statLabel}>Stages</p>
+              </div>
+              <div className={styles.statCard}>
+                <p className={styles.statValue}>{toolCount.toString().padStart(2, "0")}</p>
+                <p className={styles.statLabel}>Tools</p>
+              </div>
+              <div className={styles.statCard}>
+                <p className={styles.statValue}>TypeScript</p>
+                <p className={styles.statLabel}>Core</p>
+              </div>
+            </div>
           </div>
+        </section>
+
+        <section className={`${styles.flowRail} ${styles.reveal}`} style={{ animationDelay: "0.32s" }}>
+          {stack.map((item) => (
+            <div key={item.title} className={styles.flowItem}>
+              <span className={styles.flowBadge} style={{ "--accent": item.accent } as CSSProperties}>
+                {item.step}
+              </span>
+              <div>
+                <p className={`${styles.display} text-sm`}>{item.title}</p>
+                <p className="text-xs text-[var(--muted)]">{item.summary}</p>
+              </div>
+            </div>
+          ))}
+        </section>
+
+        <section className={styles.stageGrid}>
+          {stack.map((section, index) => (
+            <article
+              key={section.title}
+              className={`${styles.stageCard} ${styles.reveal}`}
+              style={{ "--accent": section.accent, animationDelay: `${0.4 + index * 0.08}s` } as CSSProperties}
+            >
+              <div className="flex flex-wrap items-center gap-3">
+                <span className={styles.tag}>Stack Stage</span>
+                <h2 className={`${styles.display} text-2xl md:text-3xl`}>{section.title}</h2>
+              </div>
+              <p className="mt-3 text-base text-[var(--muted)]">{section.detail}</p>
+
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                {section.tools.map((tool) => (
+                  <a
+                    key={tool.name}
+                    href={tool.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={styles.toolCard}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className={`${styles.display} text-lg`}>{tool.name}</p>
+                        <p className="mt-1 text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
+                          {tool.label}
+                        </p>
+                      </div>
+                      {tool.tag ? <span className={styles.tag}>{tool.tag}</span> : null}
+                    </div>
+                    <p className="mt-3 text-sm text-[var(--muted)]">{tool.description}</p>
+                  </a>
+                ))}
+              </div>
+            </article>
+          ))}
         </section>
       </main>
     </div>

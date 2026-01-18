@@ -1,15 +1,16 @@
 .page {
-  --paper: #f7f5f1;
+  --paper: #f6f4ef;
   --ink: #0b0d0f;
-  --muted: #5c6168;
+  --muted: #5b6168;
   --line: rgba(15, 23, 42, 0.12);
-  --card: rgba(255, 255, 255, 0.78);
+  --card: rgba(255, 255, 255, 0.84);
   --accent: #0ea5e9;
   --font-display: var(--font-syne);
   --font-body: var(--font-sora);
   color: var(--ink);
   background: var(--paper);
   font-family: var(--font-body);
+  min-height: 100vh;
 }
 
 .background {
@@ -24,9 +25,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.92) 0%,
-    rgba(247, 245, 241, 0.88) 45%,
-    rgba(242, 239, 232, 0.98) 100%
+    rgba(255, 255, 255, 0.96) 0%,
+    rgba(246, 244, 239, 0.88) 48%,
+    rgba(241, 238, 230, 0.98) 100%
   );
 }
 
@@ -46,14 +47,14 @@
 
 .grid {
   position: absolute;
-  inset: -20%;
+  inset: -30%;
   background-image:
     linear-gradient(to right, rgba(15, 23, 42, 0.08) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(15, 23, 42, 0.08) 1px, transparent 1px);
-  background-size: 140px 140px;
-  opacity: 0.22;
-  -webkit-mask-image: radial-gradient(circle at 25% 10%, rgba(0, 0, 0, 0.9), transparent 70%);
-  mask-image: radial-gradient(circle at 25% 10%, rgba(0, 0, 0, 0.9), transparent 70%);
+  background-size: 160px 160px;
+  opacity: 0.18;
+  -webkit-mask-image: radial-gradient(circle at 30% 10%, rgba(0, 0, 0, 0.9), transparent 72%);
+  mask-image: radial-gradient(circle at 30% 10%, rgba(0, 0, 0, 0.9), transparent 72%);
 }
 
 .display {
@@ -68,25 +69,93 @@
   color: var(--muted);
 }
 
-.flowPanel {
+.main {
   position: relative;
-  border-radius: 28px;
-  padding: 20px;
-  border: 1px solid var(--line);
-  background: var(--card);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+  z-index: 1;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 72px 24px 120px;
 }
 
-.flowPanel::before {
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: end;
+}
+
+.heroPanel {
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 24px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 26px 70px rgba(15, 23, 42, 0.08);
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.statCard {
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 14px 16px;
+}
+
+.statValue {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.flowRail {
+  position: relative;
+  margin-top: 28px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  padding: 18px 18px;
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.flowRail::before {
   content: "";
   position: absolute;
-  left: 24px;
-  right: 24px;
-  top: 50%;
+  inset: 50% 18px auto 18px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.25), transparent);
-  opacity: 0.45;
+  background: linear-gradient(90deg, transparent, rgba(15, 23, 42, 0.28), transparent);
+  opacity: 0.5;
+}
+
+.flowItem {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 8px;
+  border-radius: 16px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.flowItem:hover {
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
 }
 
 .flowBadge {
@@ -100,50 +169,35 @@
   font-family: var(--font-display);
   color: var(--accent);
   border: 1px solid var(--accent);
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   flex-shrink: 0;
 }
 
-.timelineLine {
-  position: absolute;
-  left: 18px;
-  top: 32px;
-  height: calc(100% - 32px);
-  width: 2px;
-  background: linear-gradient(
-    180deg,
-    rgba(14, 165, 233, 0.5) 0%,
-    rgba(16, 185, 129, 0.45) 45%,
-    rgba(245, 158, 11, 0.45) 100%
-  );
-  opacity: 0.65;
+.stageGrid {
+  margin-top: 32px;
+  display: grid;
+  gap: 22px;
 }
 
-.stepMarker {
-  position: absolute;
-  left: 0;
-  top: 32px;
-  height: 36px;
-  width: 36px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-family: var(--font-display);
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
-}
-
-.sectionCard {
+.stageCard {
+  position: relative;
   border-radius: 28px;
   border: 1px solid var(--line);
   background: var(--card);
   padding: 28px;
   backdrop-filter: blur(14px);
-  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+  overflow: hidden;
+}
+
+.stageCard::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--accent), rgba(15, 23, 42, 0.15));
 }
 
 .toolCard {
@@ -192,9 +246,27 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .statGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
-  .flowPanel::before {
+  .flowRail {
+    flex-direction: column;
+  }
+
+  .flowRail::before {
     display: none;
+  }
+
+  .statGrid {
+    grid-template-columns: 1fr;
   }
 }
 
