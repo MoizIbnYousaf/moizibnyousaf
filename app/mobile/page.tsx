@@ -22,7 +22,24 @@ export const metadata = {
     "A modern mobile app workflow covering frontend, backend, development, marketing, and analytics.",
 };
 
-const stack = [
+type Tool = {
+  name: string;
+  label: string;
+  url: string;
+  description: string;
+  tag?: string;
+};
+
+type StackStage = {
+  step: string;
+  title: string;
+  summary: string;
+  detail: string;
+  accent: string;
+  tools: Tool[];
+};
+
+const stack: StackStage[] = [
   {
     step: "01",
     title: "Frontend",
@@ -226,7 +243,7 @@ const stack = [
       },
     ],
   },
-] as const;
+];
 
 const principles = [
   {
