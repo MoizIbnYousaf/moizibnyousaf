@@ -397,9 +397,15 @@ export default function MobileStackPage() {
                   className={`${styles.stageCard} ${styles.reveal}`}
                   style={{ "--accent": section.accent, animationDelay: `${0.5 + index * 0.08}s` } as CSSProperties}
                 >
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className={styles.tag}>Stack Stage</span>
-                    <h2 className={`${styles.display} text-2xl md:text-3xl`}>{section.title}</h2>
+                  <div className={styles.stageHeader}>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className={styles.tag}>Stack Stage</span>
+                      <h2 className={`${styles.display} text-2xl md:text-3xl`}>{section.title}</h2>
+                    </div>
+                    <div className={styles.stageMeta}>
+                      <span className={styles.stagePill}>{section.step}</span>
+                      <span className={styles.stageCount}>{section.tools.length} tools</span>
+                    </div>
                   </div>
                   <p className="mt-3 text-base text-[var(--muted)]">{section.detail}</p>
 
