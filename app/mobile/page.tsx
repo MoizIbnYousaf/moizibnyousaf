@@ -1,5 +1,7 @@
 import type { CSSProperties } from "react";
 import { Syne, Sora } from "next/font/google";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import styles from "./page.module.css";
 
 const syne = Syne({
@@ -271,169 +273,194 @@ export default function MobileStackPage() {
     summary: stage.summary,
   }));
   return (
-    <div className={`${syne.variable} ${sora.variable} ${styles.page} w-full`}>
-      <div className={styles.background} aria-hidden="true">
-        <div className={styles.vignette} />
-        <div className={styles.glowA} />
-        <div className={styles.glowB} />
+    <div className={`${syne.variable} ${sora.variable} ${styles.page} font-sans`}>
+      <div className={styles.backdrop} aria-hidden="true">
+        <div className={styles.orbA} />
+        <div className={styles.orbB} />
         <div className={styles.grid} />
       </div>
 
-      <main className={styles.main}>
-        <section className={styles.hero}>
-          <div className={styles.heroCopy}>
-            <p className={`${styles.kicker} ${styles.reveal}`} style={{ animationDelay: "0.05s" }}>
-              Mobile stack
-            </p>
-            <h1
-              className={`${styles.display} ${styles.reveal} mt-4 text-4xl font-semibold md:text-6xl`}
-              style={{ animationDelay: "0.12s" }}
-            >
-              The ultimate mobile app workflow, distilled.
+      <main className="relative z-10 mx-auto max-w-6xl px-6 pb-24 pt-16">
+        <section className="grid items-center gap-10 lg:grid-cols-[1.3fr_0.9fr]">
+          <div className={styles.fadeUp} style={{ animationDelay: "0.05s" }}>
+            <Badge className="mb-4 bg-white/80 text-slate-600">Mobile Stack</Badge>
+            <h1 className="text-4xl font-semibold tracking-tight text-slate-950 md:text-6xl">
+              The world-class mobile stack, curated for elite shipping.
             </h1>
-            <p
-              className={`${styles.reveal} mt-5 text-lg text-[var(--muted)] md:text-xl`}
-              style={{ animationDelay: "0.2s" }}
-            >
-              A modern, Stripe-level stack from frontend to analytics. Keep every tool in sync,
-              start free, and scale smoothly.
+            <p className="mt-5 text-lg text-slate-600 md:text-xl">
+              A premium workflow from frontend to analytics. Ship faster, monetize earlier, and scale
+              with absolute clarity.
             </p>
           </div>
 
-          <div className={`${styles.heroPanel} ${styles.reveal}`} style={{ animationDelay: "0.26s" }}>
-            <div className="flex items-center justify-between">
-              <p className={styles.kicker}>Operating principles</p>
-              <span className={styles.tag}>Toolkit</span>
-            </div>
-            <div className="mt-4 space-y-3">
+          <Card className={`${styles.fadeUp} border-slate-200/70`} style={{ animationDelay: "0.15s" }}>
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <Badge className="bg-slate-900 text-white">Operating Principles</Badge>
+                <Badge variant="outline" className="border-slate-200 text-slate-500">
+                  Toolkit
+                </Badge>
+              </div>
+              <CardTitle className="text-2xl font-semibold text-slate-900">Build with intent</CardTitle>
+              <CardDescription>
+                Every tool earns its seat. Keep the stack lean, aligned, and relentlessly useful.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
               {principles.map((item) => (
                 <div key={item.title}>
-                  <p className={`${styles.display} text-base`}>{item.title}</p>
-                  <p className="text-sm text-[var(--muted)]">{item.description}</p>
+                  <p className="text-sm font-semibold text-slate-900">{item.title}</p>
+                  <p className="text-sm text-slate-600">{item.description}</p>
                 </div>
               ))}
-            </div>
-            <div className={styles.statGrid}>
-              <div className={styles.statCard}>
-                <p className={styles.statValue}>{stageCount.toString().padStart(2, "0")}</p>
-                <p className={styles.statLabel}>Stages</p>
+              <div className="grid gap-3 md:grid-cols-3">
+                <div className="rounded-2xl border border-slate-200/70 bg-white/80 p-4">
+                  <p className="text-2xl font-semibold text-slate-900">{stageCount.toString().padStart(2, "0")}</p>
+                  <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Stages</p>
+                </div>
+                <div className="rounded-2xl border border-slate-200/70 bg-white/80 p-4">
+                  <p className="text-2xl font-semibold text-slate-900">{toolCount.toString().padStart(2, "0")}</p>
+                  <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Tools</p>
+                </div>
+                <div className="rounded-2xl border border-slate-200/70 bg-white/80 p-4">
+                  <p className="text-2xl font-semibold text-slate-900">TypeScript</p>
+                  <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Core</p>
+                </div>
               </div>
-              <div className={styles.statCard}>
-                <p className={styles.statValue}>{toolCount.toString().padStart(2, "0")}</p>
-                <p className={styles.statLabel}>Tools</p>
-              </div>
-              <div className={styles.statCard}>
-                <p className={styles.statValue}>TypeScript</p>
-                <p className={styles.statLabel}>Core</p>
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </section>
 
-        <section className={`${styles.flowRail} ${styles.reveal}`} style={{ animationDelay: "0.32s" }}>
-          {stageSummaries.map((item) => (
-            <div key={item.title} className={styles.flowItem}>
-              <span className={styles.flowBadge} style={{ "--accent": item.accent } as CSSProperties}>
-                {item.step}
-              </span>
-              <div>
-                <p className={`${styles.display} text-sm`}>{item.title}</p>
-                <p className="text-xs text-[var(--muted)]">{item.summary}</p>
+        <Card className={`${styles.fadeUp} relative mt-10 overflow-hidden`} style={{ animationDelay: "0.22s" }}>
+          <div className="absolute left-6 right-6 top-1/2 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+          <CardContent className="grid gap-4 md:grid-cols-5">
+            {stageSummaries.map((item) => (
+              <div key={item.title} className="flex items-start gap-3">
+                <span
+                  className="flex h-9 w-9 items-center justify-center rounded-full border text-xs font-semibold"
+                  style={{ borderColor: item.accent, color: item.accent }}
+                >
+                  {item.step}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">{item.title}</p>
+                  <p className="text-xs text-slate-500">{item.summary}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </section>
+            ))}
+          </CardContent>
+        </Card>
 
-        <section className={styles.dashboard}>
-          <aside className={`${styles.sidebar} ${styles.reveal}`} style={{ animationDelay: "0.38s" }}>
-            <div className={styles.sidebarHeader}>
-              <p className={styles.kicker}>Stack overview</p>
-              <p className={`${styles.display} text-lg`}>Full workflow</p>
-            </div>
-            <div className={styles.sidebarList}>
-              {stageSummaries.map((item) => (
-                <div key={item.title} className={styles.sidebarItem}>
-                  <span className={styles.sidebarBadge} style={{ "--accent": item.accent } as CSSProperties}>
-                    {item.step}
-                  </span>
-                  <div>
-                    <p className={`${styles.display} text-sm`}>{item.title}</p>
-                    <p className="text-xs text-[var(--muted)]">{item.toolCount} tools</p>
+        <section className="mt-12 grid gap-6 lg:grid-cols-[280px_1fr]">
+          <aside className="space-y-6">
+            <Card className={`${styles.fadeUp} border-slate-200/70`} style={{ animationDelay: "0.28s" }}>
+              <CardHeader>
+                <Badge className="bg-white/80 text-slate-600">Stack Overview</Badge>
+                <CardTitle className="text-xl text-slate-900">Full workflow</CardTitle>
+                <CardDescription>All stages aligned from build to growth.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {stageSummaries.map((item) => (
+                  <div key={item.title} className="flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white/70 p-3">
+                    <span
+                      className="flex h-8 w-8 items-center justify-center rounded-full border text-xs font-semibold"
+                      style={{ borderColor: item.accent, color: item.accent }}
+                    >
+                      {item.step}
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-900">{item.title}</p>
+                      <p className="text-xs text-slate-500">{item.toolCount} tools</p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-            <div className={styles.sidebarCard}>
-              <p className={`${styles.display} text-base`}>Shipping loop</p>
-              <p className="text-sm text-[var(--muted)]">
-                Build fast, launch intentionally, measure relentlessly. Keep the stack tight and
-                cohesive.
-              </p>
-            </div>
+                ))}
+              </CardContent>
+            </Card>
+
+            <Card className={`${styles.fadeUp} border-slate-200/70`} style={{ animationDelay: "0.32s" }}>
+              <CardHeader>
+                <Badge className="bg-slate-900 text-white">Cadence</Badge>
+                <CardTitle className="text-xl text-slate-900">Shipping loop</CardTitle>
+                <CardDescription>Build fast. Launch clean. Measure relentlessly.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3 text-sm text-slate-600">
+                <p>Keep the stack intentionally small while scaling the impact.</p>
+                <p>Every tool should save time, reduce risk, or grow revenue.</p>
+              </CardContent>
+            </Card>
           </aside>
 
-          <div className={styles.content}>
-            <section className={`${styles.overviewGrid} ${styles.reveal}`} style={{ animationDelay: "0.44s" }}>
-              <div className={styles.overviewCard}>
-                <p className={styles.kicker}>Coverage</p>
-                <p className={`${styles.display} text-2xl`}>Frontend → Analytics</p>
-                <p className="text-sm text-[var(--muted)]">
-                  Everything needed to build, monetize, and grow a modern mobile product.
-                </p>
-              </div>
-              <div className={styles.overviewCard}>
-                <p className={styles.kicker}>Speed</p>
-                <p className={`${styles.display} text-2xl`}>AI-first workflow</p>
-                <p className="text-sm text-[var(--muted)]">
-                  TypeScript end-to-end with real-time sync and developer-friendly tooling.
-                </p>
-              </div>
-            </section>
+          <div className="space-y-6">
+            <div className="grid gap-4 md:grid-cols-2">
+              <Card className={`${styles.fadeUp} border-slate-200/70`} style={{ animationDelay: "0.34s" }}>
+                <CardHeader>
+                  <Badge className="bg-white/80 text-slate-600">Coverage</Badge>
+                  <CardTitle className="text-xl text-slate-900">Frontend → Analytics</CardTitle>
+                  <CardDescription>
+                    Everything needed to build, monetize, and grow a modern mobile product.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+              <Card className={`${styles.fadeUp} border-slate-200/70`} style={{ animationDelay: "0.36s" }}>
+                <CardHeader>
+                  <Badge className="bg-white/80 text-slate-600">Speed</Badge>
+                  <CardTitle className="text-xl text-slate-900">AI-first workflow</CardTitle>
+                  <CardDescription>
+                    TypeScript end-to-end with realtime sync and developer-friendly tooling.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
 
-            <section className={styles.stageGrid}>
+            <div className="grid gap-6">
               {stack.map((section, index) => (
-                <article
+                <Card
                   key={section.title}
-                  className={`${styles.stageCard} ${styles.reveal}`}
-                  style={{ "--accent": section.accent, animationDelay: `${0.5 + index * 0.08}s` } as CSSProperties}
+                  className={`${styles.fadeUp} border-l-4 border-slate-200/70`}
+                  style={{ animationDelay: `${0.4 + index * 0.08}s`, borderLeftColor: section.accent }}
                 >
-                  <div className={styles.stageHeader}>
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span className={styles.tag}>Stack Stage</span>
-                      <h2 className={`${styles.display} text-2xl md:text-3xl`}>{section.title}</h2>
+                  <CardHeader>
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <div className="flex items-center gap-3">
+                        <Badge className="bg-white/80 text-slate-600">Stack Stage</Badge>
+                        <CardTitle className="text-2xl text-slate-900">{section.title}</CardTitle>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Badge className="bg-white/80 text-slate-600">{section.step}</Badge>
+                        <span className="text-xs uppercase tracking-[0.24em] text-slate-500">
+                          {section.tools.length} tools
+                        </span>
+                      </div>
                     </div>
-                    <div className={styles.stageMeta}>
-                      <span className={styles.stagePill}>{section.step}</span>
-                      <span className={styles.stageCount}>{section.tools.length} tools</span>
-                    </div>
-                  </div>
-                  <p className="mt-3 text-base text-[var(--muted)]">{section.detail}</p>
-
-                  <div className="mt-6 grid gap-4 md:grid-cols-2">
-                    {section.tools.map((tool) => (
-                      <a
-                        key={tool.name}
-                        href={tool.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={styles.toolCard}
-                      >
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <p className={`${styles.display} text-lg`}>{tool.name}</p>
-                            <p className="mt-1 text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
-                              {tool.label}
-                            </p>
+                    <CardDescription className="text-sm text-slate-600">{section.detail}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid gap-4 md:grid-cols-2">
+                      {section.tools.map((tool) => (
+                        <a
+                          key={tool.name}
+                          href={tool.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_18px_45px_rgba(15,23,42,0.12)]"
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div>
+                              <p className="text-base font-semibold text-slate-900">{tool.name}</p>
+                              <p className="text-xs uppercase tracking-[0.22em] text-slate-500">{tool.label}</p>
+                            </div>
+                            {tool.tag ? (
+                              <Badge className="bg-slate-900 text-white">{tool.tag}</Badge>
+                            ) : null}
                           </div>
-                          {tool.tag ? <span className={styles.tag}>{tool.tag}</span> : null}
-                        </div>
-                        <p className="mt-3 text-sm text-[var(--muted)]">{tool.description}</p>
-                      </a>
-                    ))}
-                  </div>
-                </article>
+                          <p className="mt-3 text-sm text-slate-600">{tool.description}</p>
+                        </a>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
-            </section>
+            </div>
           </div>
         </section>
       </main>
