@@ -1,69 +1,55 @@
-<h1 align="center">👋 Hi, I'm Moiz Ibn Yousaf</h1>
-<h3 align="center">Founder &amp; Principal Developer — <a href="https://www.halaali.app" target="_blank">Halaali</a></h3>
+<div align="center">
+  <img src="header.svg" alt="Moiz - Abdul Moiz Shahzad" width="100%" />
+</div>
+
+<br/>
+
+<div align="center">
+  <a href="mailto:moizibnyousaf@gmail.com">
+    <code>moizibnyousaf@gmail.com</code>
+  </a>
+</div>
+
+<br/>
 
 <p align="center">
-  <em>Building the Muslim Super App : blending faith, design, and technology into one purposeful ecosystem.</em>
+  <a href="https://x.com/MoizIbnYousaf">
+    <img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" height="28" alt="X" />
+  </a>
+  &nbsp;
+  <a href="https://linkedin.com/in/abdul-moiz-shahzad-43242a277">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" height="28" alt="LinkedIn" />
+  </a>
+  &nbsp;
+  <a href="https://moizibnyousaf.com">
+    <img src="https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=safari&logoColor=white" height="28" alt="Website" />
+  </a>
 </p>
-<p align="center">
-  <a href="https://github.com/MoizIbnYousaf?tab=followers" target="_blank"><img src="https://img.shields.io/github/followers/MoizIbnYousaf?label=Followers&style=social" alt="GitHub Followers"/></a>
-</p>
-</p>
 
----
+<br/>
 
-### 🤠 About Me  
-💻 Self‑taught Software Engineer passionate about real‑world impact.  
-🚀 Currently building **Halaali**, a super app for halal discovery, dining, and lifestyle.  
----
-### 📞 Connect with Me
-I love meeting new people and discussing exciting ideas. Feel free to reach out through any of the platforms below:
+<div align="center">
+  <a href="https://halaali.app">
+    <img src="https://raw.githubusercontent.com/MoizIbnYousaf/moizibnyousaf/main/public/halaali-logo.png" alt="Halaali" width="60" />
+  </a>
+  <br/><br/>
+  <a href="https://halaali.app"><strong>Halaali</strong></a>
+  <br/>
+  <sub>The Muslim Super App</sub>
+</div>
 
-- 🔗 [Website](https://www.moizibnyousaf.com)
-- 🕊️ [LinkedIn](https://www.linkedin.com/in/moizibnyousaf)
-- 🕊️ [Twitter/X](https://twitter.com/moizibnyousaf)
-- 🕊️ [Email](mailto:contact@moizibnyousaf.com)
+<br/><br/>
 
-Thanks for visiting my profile! ✨
-🏆 Focused on creating products that feel *human, elegant, and useful.*  
-🤝 Open to collaboration and new opportunities  feel free to reach out!
+<div align="center">
+  <a href="https://quran.com/an-najm/39">
+    <sub><em>"that man will only have what he has worked towards"</em></sub>
+    <br/>
+    <sup>53:39</sup>
+  </a>
+</div>
 
----
-
-### 🧩 Tech Stack
-
-| Category | Tools & Technologies |
-| --- | --- |
-| **Languages** | TypeScript, JavaScript, Python, HTML/CSS |
-| **Frameworks** | React, Next.js, React Native |
-| **Database** | Supabase (PostgreSQL) |
-| **Tools** | GitHub Actions, Docker, Linear, Notion, Figma |
-
----
-
-### 🤌 Projects
-
-#### 🌙 [Halaali App](https://halaali.app)  
-Discover verified halal places, exclusive deals, and build trust in the halal economy.
----
-
-### 📊 My GitHub at a Glance
+<br/>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=MoizIbnYousaf&show_icons=true&theme=algolia&hide_border=true" width="45%">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=MoizIbnYousaf&theme=algolia&hide_border=true" width="45%">
-  <img src="https://github-profile-trophy.vercel.app/?username=MoizIbnYousaf&theme=algolia&no-frame=true&column=4" width="90%">
+  <img src="https://komarev.com/ghpvc/?username=MoizIbnYousaf&style=flat-square&color=D4AF37&label=" alt="" />
 </p>
-
----
-
-### 🌐 Connect
-
-<p align="center">
-  <a href="https://www.moizibnyousaf.com">🌍 Website</a> • 
-  <a href="https://www.linkedin.com/in/moizibnyousaf/">💼 LinkedIn</a> • 
-  <a href="https://twitter.com/moizibnyousaf">🐦 X (Twitter)</a>
-</p>
-
----
-
-> _“Faith fuels purpose, and purpose fuels code.”_

@@ -1,7 +1,4 @@
-import type { CSSProperties } from "react";
 import { Syne, Sora } from "next/font/google";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import styles from "./page.module.css";
 
 const syne = Syne({
@@ -20,449 +17,313 @@ const sora = Sora({
 
 export const metadata = {
   title: "Mobile Stack | moizibnyousaf.com",
-  description:
-    "A modern mobile app workflow covering frontend, backend, development, marketing, and analytics.",
+  description: "The tools and workflow I use to ship mobile apps from idea to App Store.",
 };
 
 type Tool = {
   name: string;
-  label: string;
   url: string;
   description: string;
   tag?: string;
 };
 
-type StackStage = {
+type Stage = {
   step: string;
   title: string;
   summary: string;
-  detail: string;
-  accent: string;
+  accent: "cyan" | "teal" | "amber" | "emerald" | "violet";
   tools: Tool[];
 };
 
-const stack: StackStage[] = [
+const stages: Stage[] = [
   {
     step: "01",
     title: "Frontend",
     summary: "Ship iOS, Android, and web from one codebase.",
-    detail: "Cross-platform build with polished UI, motion, and consistent design tokens.",
-    accent: "#0ea5e9",
+    accent: "cyan",
     tools: [
-      {
-        name: "Expo",
-        label: "expo.dev",
-        url: "https://expo.dev",
-        description: "EAS builds, OTA updates, and native modules without the setup pain.",
-      },
-      {
-        name: "NativeWind",
-        label: "nativewind.dev",
-        url: "https://nativewind.dev",
-        description: "Tailwind-style utilities to keep styling disciplined and fast.",
-      },
-      {
-        name: "LottieFiles",
-        label: "lottiefiles.com",
-        url: "https://lottiefiles.com",
-        description: "Lightweight animations for moments of delight.",
-      },
-      {
-        name: "React Native Reanimated",
-        label: "docs.swmansion.com",
-        url: "https://docs.swmansion.com/react-native-reanimated",
-        description: "High-performance gestures and complex interactions.",
-      },
+      { name: "Expo", url: "https://expo.dev", description: "EAS builds, OTA updates, native modules without pain." },
+      { name: "NativeWind", url: "https://nativewind.dev", description: "Tailwind utilities for disciplined, fast styling." },
+      { name: "LottieFiles", url: "https://lottiefiles.com", description: "Lightweight animations that feel polished." },
+      { name: "Reanimated", url: "https://docs.swmansion.com/react-native-reanimated", description: "High-performance gestures and interactions." },
     ],
   },
   {
     step: "02",
     title: "Backend",
     summary: "Realtime data, auth, payments, and AI.",
-    detail: "TypeScript-first infrastructure with best-in-class services for growth.",
-    accent: "#14b8a6",
+    accent: "teal",
     tools: [
-      {
-        name: "Convex",
-        label: "convex.dev",
-        url: "https://convex.dev",
-        description: "Database, functions, and realtime sync in one TypeScript backend.",
-      },
-      {
-        name: "Clerk",
-        label: "clerk.com",
-        url: "https://clerk.com",
-        description: "Production-grade auth with polished Expo integrations.",
-      },
-      {
-        name: "Resend",
-        label: "resend.com",
-        url: "https://resend.com",
-        description: "Transactional and marketing email with strong developer experience.",
-      },
-      {
-        name: "Loops",
-        label: "loops.so",
-        url: "https://loops.so",
-        description: "Marketing-focused email alternative.",
-        tag: "Honorable",
-      },
-      {
-        name: "Superwall",
-        label: "superwall.com",
-        url: "https://superwall.com",
-        description: "Paywalls, receipts, entitlements, and subscription flow.",
-      },
-      {
-        name: "RevenueCat",
-        label: "revenuecat.com",
-        url: "https://www.revenuecat.com",
-        description: "Alternative IAP platform with deep integrations.",
-        tag: "Honorable",
-      },
-      {
-        name: "OpenAI",
-        label: "platform.openai.com",
-        url: "https://platform.openai.com",
-        description: "Text, image, and voice models for AI features.",
-      },
+      { name: "Convex", url: "https://convex.dev", description: "Database, functions, realtime sync in TypeScript." },
+      { name: "Clerk", url: "https://clerk.com", description: "Production-grade auth with Expo integrations." },
+      { name: "Resend", url: "https://resend.com", description: "Transactional email with great DX." },
+      { name: "Loops", url: "https://loops.so", description: "Marketing-focused email alternative.", tag: "Alt" },
+      { name: "Superwall", url: "https://superwall.com", description: "Paywalls, receipts, subscription flow." },
+      { name: "RevenueCat", url: "https://revenuecat.com", description: "IAP platform with deep integrations.", tag: "Alt" },
+      { name: "OpenAI", url: "https://platform.openai.com", description: "Text, image, voice models for AI features." },
     ],
   },
   {
     step: "03",
     title: "Development",
-    summary: "Accelerate building, design, and focus.",
-    detail: "AI-accelerated workflow for shipping faster without burning out.",
-    accent: "#f59e0b",
+    summary: "AI-accelerated workflow for shipping fast.",
+    accent: "amber",
     tools: [
-      {
-        name: "Cursor",
-        label: "cursor.com",
-        url: "https://cursor.com",
-        description: "AI-first IDE for high-velocity shipping.",
-      },
-      {
-        name: "Claude Code",
-        label: "code.claude.com",
-        url: "https://code.claude.com",
-        description: "Terminal-based AI for greenfield builds.",
-      },
-      {
-        name: "Figma",
-        label: "figma.com",
-        url: "https://figma.com",
-        description: "Branding, icons, and App Store graphics.",
-      },
-      {
-        name: "Willow Voice",
-        label: "willowvoice.com",
-        url: "https://willowvoice.com",
-        description: "Fast speech-to-text for prompting.",
-      },
-      {
-        name: "Ebb",
-        label: "ebb.cool",
-        url: "https://ebb.cool",
-        description: "Distraction blocker for deep work.",
-      },
-      {
-        name: "Lock In Playlist",
-        label: "music.apple.com",
-        url: "https://music.apple.com/us/playlist/lock-in",
-        description: "Focus soundtrack while building.",
-      },
+      { name: "Cursor", url: "https://cursor.com", description: "AI-first IDE for fast shipping." },
+      { name: "Claude Code", url: "https://code.claude.com", description: "Terminal AI for greenfield builds." },
+      { name: "Figma", url: "https://figma.com", description: "Branding, icons, App Store graphics." },
+      { name: "Willow Voice", url: "https://willowvoice.com", description: "Mac speech-to-text for fast prompting." },
+      { name: "Ebb", url: "https://ebb.cool", description: "Distraction blocker for deep work." },
     ],
   },
   {
     step: "04",
     title: "Marketing",
-    summary: "Landing pages, content, and paid growth.",
-    detail: "Distribution stack to launch, rank, and scale acquisition.",
-    accent: "#0f766e",
+    summary: "Landing pages, content, paid growth.",
+    accent: "emerald",
     tools: [
-      {
-        name: "Vercel + Next.js",
-        label: "vercel.com",
-        url: "https://vercel.com",
-        description: "Landing page and blog with fast iteration.",
-      },
-      {
-        name: "Apple Search Ads",
-        label: "ads.apple.com",
-        url: "https://ads.apple.com",
-        description: "High-intent paid acquisition channel.",
-      },
-      {
-        name: "Sanity",
-        label: "sanity.io",
-        url: "https://sanity.io",
-        description: "CMS for shipping SEO content quickly.",
-      },
-      {
-        name: "Pallyy",
-        label: "pallyy.com",
-        url: "https://pallyy.com",
-        description: "Social scheduling across platforms.",
-      },
-      {
-        name: "Screen Studio",
-        label: "screen.studio",
-        url: "https://screen.studio",
-        description: "Crisp app and desktop recordings.",
-      },
-      {
-        name: "Meta Ads",
-        label: "adsmanager.facebook.com",
-        url: "https://adsmanager.facebook.com",
-        description: "Scalable paid social, best with a solid MMP.",
-      },
+      { name: "Vercel", url: "https://vercel.com", description: "Landing page and blog with fast iteration." },
+      { name: "Apple Search Ads", url: "https://ads.apple.com", description: "High-intent paid acquisition." },
+      { name: "Meta Ads", url: "https://adsmanager.facebook.com", description: "Scalable paid social for mobile apps." },
+      { name: "Sanity", url: "https://sanity.io", description: "CMS for shipping SEO content quickly." },
+      { name: "Pallyy", url: "https://pallyy.com", description: "Social media scheduler for all platforms." },
+      { name: "Screen Studio", url: "https://screen.studio", description: "Crisp app recordings for marketing." },
     ],
   },
   {
     step: "05",
     title: "Analytics",
     summary: "Track product and growth loops.",
-    detail: "Measure behavior, attribution, and store search performance.",
-    accent: "#2563eb",
+    accent: "violet",
     tools: [
-      {
-        name: "PostHog",
-        label: "posthog.com",
-        url: "https://posthog.com",
-        description: "Product analytics with modern feature depth.",
-      },
-      {
-        name: "AppsFlyer",
-        label: "appsflyer.com",
-        url: "https://www.appsflyer.com",
-        description: "Attribution and MMP tooling for paid growth.",
-      },
-      {
-        name: "AppTweak",
-        label: "apptweak.com",
-        url: "https://apptweak.com",
-        description: "App Store optimization insights.",
-      },
+      { name: "PostHog", url: "https://posthog.com", description: "Product analytics with modern depth." },
+      { name: "AppsFlyer", url: "https://appsflyer.com", description: "Attribution and MMP for paid growth." },
+      { name: "AppTweak", url: "https://apptweak.com", description: "App Store optimization insights." },
     ],
   },
 ];
 
-const principles = [
-  {
-    title: "Start free, scale later",
-    description: "Most tools have generous free tiers so you can validate before you pay.",
-  },
-  {
-    title: "One language, fewer context switches",
-    description: "TypeScript end-to-end keeps velocity high and glue code low.",
-  },
-  {
-    title: "Build, launch, measure",
-    description: "Marketing and analytics are built into the workflow, not bolted on later.",
-  },
-] as const;
+const accentClasses = {
+  cyan: styles.accentCyan,
+  teal: styles.accentTeal,
+  amber: styles.accentAmber,
+  emerald: styles.accentEmerald,
+  violet: styles.accentViolet,
+};
+
+const accentColors = {
+  cyan: "#38bdf8",
+  teal: "#14b8a6",
+  amber: "#fbbf24",
+  emerald: "#10b981",
+  violet: "#8b5cf6",
+};
 
 export default function MobileStackPage() {
-  const toolCount = stack.reduce((total, stage) => total + stage.tools.length, 0);
-  const stageCount = stack.length;
-  const stageSummaries = stack.map((stage) => ({
-    title: stage.title,
-    step: stage.step,
-    accent: stage.accent,
-    toolCount: stage.tools.length,
-    summary: stage.summary,
-  }));
+  const toolCount = stages.reduce((sum, s) => sum + s.tools.length, 0);
+
   return (
-    <div className={`${syne.variable} ${sora.variable} ${styles.page} font-sans`}>
+    <div className={`${syne.variable} ${sora.variable} ${styles.page}`} style={{ fontFamily: "var(--font-sora)" }}>
+      {/* Background */}
       <div className={styles.backdrop} aria-hidden="true">
         <div className={styles.orbA} />
         <div className={styles.orbB} />
+        <div className={styles.orbC} />
         <div className={styles.grid} />
       </div>
 
-      <main className="relative z-10 mx-auto max-w-6xl px-6 pb-24 pt-16">
-        <section className="grid items-center gap-10 lg:grid-cols-[1.3fr_0.9fr]">
-          <div className={styles.fadeUp} style={{ animationDelay: "0.05s" }}>
-            <Badge className="mb-4 bg-white/80 text-slate-600">Mobile Stack</Badge>
-            <h1 className="text-4xl font-semibold tracking-tight text-slate-950 md:text-6xl">
-              The world-class mobile stack, curated for elite shipping.
-            </h1>
-            <p className="mt-5 text-lg text-slate-600 md:text-xl">
-              A premium workflow from frontend to analytics. Ship faster, monetize earlier, and scale
-              with absolute clarity.
-            </p>
+      <main style={{ position: "relative", zIndex: 10, maxWidth: "64rem", marginLeft: "auto", marginRight: "auto", paddingLeft: "1.5rem", paddingRight: "1.5rem", paddingTop: "5rem", paddingBottom: "5rem" }}>
+        {/* Hero */}
+        <header className={styles.fadeUp} style={{ animationDelay: "0.1s" }}>
+          <p className={styles.badge} style={{ marginBottom: "1rem" }}>Mobile Stack</p>
+          <h1
+            className={styles.glowText}
+            style={{
+              fontFamily: "var(--font-syne)",
+              fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
+              fontWeight: 600,
+              lineHeight: 1.1,
+              letterSpacing: "-0.02em",
+              marginBottom: "1.25rem",
+            }}
+          >
+            The stack I use<br />to ship apps.
+          </h1>
+          <p style={{ fontSize: "1.125rem", color: "var(--text-secondary)", maxWidth: "32rem" }}>
+            Frontend to analytics. Ship faster, monetize earlier, scale cleanly.
+          </p>
+        </header>
+
+        {/* Stats row */}
+        <div
+          className={styles.fadeUp}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "1rem",
+            marginTop: "3rem",
+            animationDelay: "0.2s",
+          }}
+        >
+          <div className={styles.statBox}>
+            <div className={styles.statValue}>{stages.length.toString().padStart(2, "0")}</div>
+            <div className={styles.statLabel}>Stages</div>
           </div>
+          <div className={styles.statBox}>
+            <div className={styles.statValue}>{toolCount.toString().padStart(2, "0")}</div>
+            <div className={styles.statLabel}>Tools</div>
+          </div>
+          <div className={styles.statBox}>
+            <div className={styles.statValue}>TS</div>
+            <div className={styles.statLabel}>End to End</div>
+          </div>
+        </div>
 
-          <Card className={`${styles.fadeUp} border-slate-200/70`} style={{ animationDelay: "0.15s" }}>
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <Badge className="bg-slate-900 text-white">Operating Principles</Badge>
-                <Badge variant="outline" className="border-slate-200 text-slate-500">
-                  Toolkit
-                </Badge>
-              </div>
-              <CardTitle className="text-2xl font-semibold text-slate-900">Build with intent</CardTitle>
-              <CardDescription>
-                Every tool earns its seat. Keep the stack lean, aligned, and relentlessly useful.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {principles.map((item) => (
-                <div key={item.title}>
-                  <p className="text-sm font-semibold text-slate-900">{item.title}</p>
-                  <p className="text-sm text-slate-600">{item.description}</p>
-                </div>
-              ))}
-              <div className="grid gap-3 md:grid-cols-3">
-                <div className="rounded-2xl border border-slate-200/70 bg-white/80 p-4">
-                  <p className="text-2xl font-semibold text-slate-900">{stageCount.toString().padStart(2, "0")}</p>
-                  <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Stages</p>
-                </div>
-                <div className="rounded-2xl border border-slate-200/70 bg-white/80 p-4">
-                  <p className="text-2xl font-semibold text-slate-900">{toolCount.toString().padStart(2, "0")}</p>
-                  <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Tools</p>
-                </div>
-                <div className="rounded-2xl border border-slate-200/70 bg-white/80 p-4">
-                  <p className="text-2xl font-semibold text-slate-900">TypeScript</p>
-                  <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Core</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
+        {/* Stage navigation */}
+        <nav
+          className={styles.fadeUp}
+          style={{
+            display: "flex",
+            gap: "0.75rem",
+            flexWrap: "wrap",
+            marginTop: "3rem",
+            animationDelay: "0.3s",
+          }}
+        >
+          {stages.map((stage) => (
+            <a
+              key={stage.step}
+              href={`#${stage.title.toLowerCase()}`}
+              className={`${styles.badge} ${accentClasses[stage.accent]}`}
+              style={{
+                background: `color-mix(in srgb, ${accentColors[stage.accent]} 15%, transparent)`,
+                borderColor: `color-mix(in srgb, ${accentColors[stage.accent]} 30%, transparent)`,
+                color: accentColors[stage.accent],
+              }}
+            >
+              {stage.step} {stage.title}
+            </a>
+          ))}
+        </nav>
 
-        <Card className={`${styles.fadeUp} relative mt-10 overflow-hidden`} style={{ animationDelay: "0.22s" }}>
-          <div className="absolute left-6 right-6 top-1/2 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-          <CardContent className="grid gap-4 md:grid-cols-5">
-            {stageSummaries.map((item) => (
-              <div key={item.title} className="flex items-start gap-3">
-                <span
-                  className="flex h-9 w-9 items-center justify-center rounded-full border text-xs font-semibold"
-                  style={{ borderColor: item.accent, color: item.accent }}
+        {/* Stages */}
+        <div style={{ marginTop: "4rem", display: "flex", flexDirection: "column", gap: "4rem" }}>
+          {stages.map((stage, idx) => (
+            <section
+              key={stage.step}
+              id={stage.title.toLowerCase()}
+              className={styles.fadeUp}
+              style={{ animationDelay: `${0.4 + idx * 0.1}s` }}
+            >
+              {/* Stage header */}
+              <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+                <div
+                  className={styles.stageDot}
+                  style={{
+                    borderColor: accentColors[stage.accent],
+                    color: accentColors[stage.accent],
+                    boxShadow: `0 0 20px color-mix(in srgb, ${accentColors[stage.accent]} 40%, transparent)`,
+                  }}
                 >
-                  {item.step}
-                </span>
+                  {stage.step}
+                </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-900">{item.title}</p>
-                  <p className="text-xs text-slate-500">{item.summary}</p>
+                  <h2
+                    style={{
+                      fontFamily: "var(--font-syne)",
+                      fontSize: "1.75rem",
+                      fontWeight: 600,
+                      color: "var(--text-primary)",
+                    }}
+                  >
+                    {stage.title}
+                  </h2>
+                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)" }}>{stage.summary}</p>
                 </div>
               </div>
-            ))}
-          </CardContent>
-        </Card>
 
-        <section className="mt-12 grid gap-6 lg:grid-cols-[280px_1fr]">
-          <aside className="space-y-6">
-            <Card className={`${styles.fadeUp} border-slate-200/70`} style={{ animationDelay: "0.28s" }}>
-              <CardHeader>
-                <Badge className="bg-white/80 text-slate-600">Stack Overview</Badge>
-                <CardTitle className="text-xl text-slate-900">Full workflow</CardTitle>
-                <CardDescription>All stages aligned from build to growth.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {stageSummaries.map((item) => (
-                  <div key={item.title} className="flex items-center gap-3 rounded-2xl border border-slate-200/70 bg-white/70 p-3">
-                    <span
-                      className="flex h-8 w-8 items-center justify-center rounded-full border text-xs font-semibold"
-                      style={{ borderColor: item.accent, color: item.accent }}
-                    >
-                      {item.step}
-                    </span>
-                    <div>
-                      <p className="text-sm font-semibold text-slate-900">{item.title}</p>
-                      <p className="text-xs text-slate-500">{item.toolCount} tools</p>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            <Card className={`${styles.fadeUp} border-slate-200/70`} style={{ animationDelay: "0.32s" }}>
-              <CardHeader>
-                <Badge className="bg-slate-900 text-white">Cadence</Badge>
-                <CardTitle className="text-xl text-slate-900">Shipping loop</CardTitle>
-                <CardDescription>Build fast. Launch clean. Measure relentlessly.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3 text-sm text-slate-600">
-                <p>Keep the stack intentionally small while scaling the impact.</p>
-                <p>Every tool should save time, reduce risk, or grow revenue.</p>
-              </CardContent>
-            </Card>
-          </aside>
-
-          <div className="space-y-6">
-            <div className="grid gap-4 md:grid-cols-2">
-              <Card className={`${styles.fadeUp} border-slate-200/70`} style={{ animationDelay: "0.34s" }}>
-                <CardHeader>
-                  <Badge className="bg-white/80 text-slate-600">Coverage</Badge>
-                  <CardTitle className="text-xl text-slate-900">Frontend → Analytics</CardTitle>
-                  <CardDescription>
-                    Everything needed to build, monetize, and grow a modern mobile product.
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className={`${styles.fadeUp} border-slate-200/70`} style={{ animationDelay: "0.36s" }}>
-                <CardHeader>
-                  <Badge className="bg-white/80 text-slate-600">Speed</Badge>
-                  <CardTitle className="text-xl text-slate-900">AI-first workflow</CardTitle>
-                  <CardDescription>
-                    TypeScript end-to-end with realtime sync and developer-friendly tooling.
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </div>
-
-            <div className="grid gap-6">
-              {stack.map((section, index) => (
-                <Card
-                  key={section.title}
-                  className={`${styles.fadeUp} border-l-4 border-slate-200/70`}
-                  style={{ animationDelay: `${0.4 + index * 0.08}s`, borderLeftColor: section.accent }}
-                >
-                  <CardHeader>
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <div className="flex items-center gap-3">
-                        <Badge className="bg-white/80 text-slate-600">Stack Stage</Badge>
-                        <CardTitle className="text-2xl text-slate-900">{section.title}</CardTitle>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Badge className="bg-white/80 text-slate-600">{section.step}</Badge>
-                        <span className="text-xs uppercase tracking-[0.24em] text-slate-500">
-                          {section.tools.length} tools
-                        </span>
-                      </div>
-                    </div>
-                    <CardDescription className="text-sm text-slate-600">{section.detail}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid gap-4 md:grid-cols-2">
-                      {section.tools.map((tool) => (
-                        <a
-                          key={tool.name}
-                          href={tool.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="group rounded-2xl border border-slate-200/70 bg-white/80 p-4 transition hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_18px_45px_rgba(15,23,42,0.12)]"
+              {/* Tools grid */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                  gap: "1rem",
+                }}
+              >
+                {stage.tools.map((tool) => (
+                  <a
+                    key={tool.name}
+                    href={tool.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${styles.toolCard} ${accentClasses[stage.accent]}`}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <div style={{ position: "relative", zIndex: 1 }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <h3
+                          style={{
+                            fontFamily: "var(--font-syne)",
+                            fontSize: "1.1rem",
+                            fontWeight: 600,
+                            color: "var(--text-primary)",
+                          }}
                         >
-                          <div className="flex items-start justify-between gap-3">
-                            <div>
-                              <p className="text-base font-semibold text-slate-900">{tool.name}</p>
-                              <p className="text-xs uppercase tracking-[0.22em] text-slate-500">{tool.label}</p>
-                            </div>
-                            {tool.tag ? (
-                              <Badge className="bg-slate-900 text-white">{tool.tag}</Badge>
-                            ) : null}
-                          </div>
-                          <p className="mt-3 text-sm text-slate-600">{tool.description}</p>
-                        </a>
-                      ))}
+                          {tool.name}
+                        </h3>
+                        {tool.tag && (
+                          <span
+                            className={styles.badge}
+                            style={{
+                              fontSize: "0.6rem",
+                              padding: "0.15rem 0.5rem",
+                            }}
+                          >
+                            {tool.tag}
+                          </span>
+                        )}
+                      </div>
+                      <p
+                        style={{
+                          fontSize: "0.875rem",
+                          color: "var(--text-secondary)",
+                          marginTop: "0.5rem",
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        {tool.description}
+                      </p>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <footer
+          className={styles.fadeUp}
+          style={{
+            marginTop: "5rem",
+            paddingTop: "2rem",
+            borderTop: "1px solid var(--border)",
+            textAlign: "center",
+            animationDelay: "0.9s",
+          }}
+        >
+          <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", marginBottom: "1rem" }}>
+            Built with intent. Every tool earns its seat.
+          </p>
+          <a
+            href="https://x.com/nathan_covey/status/2012553962415706585"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.footerLink}
+          >
+            Inspired by @nathan_covey
+          </a>
+        </footer>
       </main>
     </div>
   );
