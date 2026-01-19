@@ -16,8 +16,8 @@ const sora = Sora({
 });
 
 export const metadata = {
-  title: "Mobile Stack | moizibnyousaf.com",
-  description: "The tools and workflow I use to ship mobile apps from idea to App Store.",
+  title: "App Stack | moizibnyousaf.com",
+  description: "Tools and workflow to ship mobile apps from idea to App Store.",
 };
 
 type Tool = {
@@ -140,7 +140,7 @@ export default function MobileStackPage() {
       <main style={{ position: "relative", zIndex: 10, maxWidth: "64rem", marginLeft: "auto", marginRight: "auto", paddingLeft: "1.5rem", paddingRight: "1.5rem", paddingTop: "5rem", paddingBottom: "5rem" }}>
         {/* Hero */}
         <header className={styles.fadeUp} style={{ animationDelay: "0.1s" }}>
-          <p className={styles.badge} style={{ marginBottom: "1rem" }}>Mobile Stack</p>
+          <p className={styles.badge} style={{ marginBottom: "1rem" }}>App Stack</p>
           <h1
             className={styles.glowText}
             style={{
@@ -152,7 +152,7 @@ export default function MobileStackPage() {
               marginBottom: "1.25rem",
             }}
           >
-            The stack I use<br />to ship apps.
+App Stack.
           </h1>
           <p style={{ fontSize: "1.125rem", color: "var(--text-secondary)", maxWidth: "32rem" }}>
             Frontend to analytics. Ship faster, monetize earlier, scale cleanly.
