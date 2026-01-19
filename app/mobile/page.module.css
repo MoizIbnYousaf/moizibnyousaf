@@ -274,6 +274,146 @@
   opacity: 1;
 }
 
+/* Timeline container */
+.timeline {
+  position: relative;
+  padding-left: 60px;
+}
+
+.timelineSpine {
+  position: absolute;
+  left: 19px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(56, 189, 248, 0.6) 5%,
+    rgba(20, 184, 166, 0.6) 25%,
+    rgba(251, 191, 36, 0.6) 50%,
+    rgba(16, 185, 129, 0.6) 75%,
+    rgba(139, 92, 246, 0.6) 95%,
+    transparent 100%
+  );
+  border-radius: 1px;
+}
+
+/* Timing badge */
+.timingBadge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+/* Cost and complexity indicators */
+.toolMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.toolMeta span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.metaDot {
+  width: 3px;
+  height: 3px;
+  background: var(--text-muted);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.integratesWith {
+  color: var(--text-secondary);
+}
+
+/* Alternative card styling */
+.toolCard.isAlternative {
+  border-style: dashed;
+  opacity: 0.75;
+}
+
+.toolCard.isAlternative:hover {
+  opacity: 1;
+}
+
+/* Use when text for alternatives */
+.useWhen {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Stage arrow */
+.stageArrow {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0;
+  opacity: 0.3;
+}
+
+.stageArrow svg {
+  width: 24px;
+  height: 24px;
+  color: var(--text-muted);
+}
+
+/* Progress dots in stage header */
+.stageProgress {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.stageProgressDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.stageProgressDot.active {
+  background: var(--accent);
+}
+
+.stageProgressDot.completed {
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+/* Mobile: hide spine, timing badges */
+@media (max-width: 640px) {
+  .timeline {
+    padding-left: 0;
+  }
+
+  .timelineSpine {
+    display: none;
+  }
+
+  .timingBadge {
+    display: none;
+  }
+
+  .integratesWith {
+    display: none;
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .fadeUp, .fadeIn, .scaleIn {

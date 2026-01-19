@@ -25,6 +25,11 @@ type Tool = {
   url: string;
   description: string;
   tag?: string;
+  timing?: string;
+  cost?: string;
+  complexity?: "quick" | "moderate" | "involved";
+  integrates?: string[];
+  useWhen?: string;
 };
 
 type Stage = {
@@ -42,10 +47,10 @@ const stages: Stage[] = [
     summary: "Ship iOS, Android, and web from one codebase.",
     accent: "cyan",
     tools: [
-      { name: "Expo", url: "https://expo.dev", description: "EAS builds, OTA updates, native modules without pain." },
-      { name: "NativeWind", url: "https://nativewind.dev", description: "Tailwind utilities for disciplined, fast styling." },
-      { name: "LottieFiles", url: "https://lottiefiles.com", description: "Lightweight animations that feel polished." },
-      { name: "Reanimated", url: "https://docs.swmansion.com/react-native-reanimated", description: "High-performance gestures and interactions." },
+      { name: "Expo", url: "https://expo.dev", description: "EAS builds, OTA updates, native modules without pain.", timing: "Day 1", cost: "$0", complexity: "quick" },
+      { name: "NativeWind", url: "https://nativewind.dev", description: "Tailwind utilities for disciplined, fast styling.", timing: "Day 1", cost: "$0", complexity: "quick" },
+      { name: "LottieFiles", url: "https://lottiefiles.com", description: "Lightweight animations that feel polished.", timing: "Week 2", cost: "$0", complexity: "quick" },
+      { name: "Reanimated", url: "https://docs.swmansion.com/react-native-reanimated", description: "High-performance gestures and interactions.", timing: "Week 2-3", cost: "$0", complexity: "moderate" },
     ],
   },
   {
@@ -54,13 +59,13 @@ const stages: Stage[] = [
     summary: "Realtime data, auth, payments, and AI.",
     accent: "teal",
     tools: [
-      { name: "Convex", url: "https://convex.dev", description: "Database, functions, realtime sync in TypeScript." },
-      { name: "Clerk", url: "https://clerk.com", description: "Production-grade auth with Expo integrations." },
-      { name: "Resend", url: "https://resend.com", description: "Transactional email with great DX." },
-      { name: "Loops", url: "https://loops.so", description: "Marketing-focused email alternative.", tag: "Alt" },
-      { name: "Superwall", url: "https://superwall.com", description: "Paywalls, receipts, subscription flow." },
-      { name: "RevenueCat", url: "https://revenuecat.com", description: "IAP platform with deep integrations.", tag: "Alt" },
-      { name: "OpenAI", url: "https://platform.openai.com", description: "Text, image, voice models for AI features." },
+      { name: "Convex", url: "https://convex.dev", description: "Database, functions, realtime sync in TypeScript.", timing: "Day 2-3", cost: "$0", complexity: "quick" },
+      { name: "Clerk", url: "https://clerk.com", description: "Production-grade auth with Expo integrations.", timing: "Week 1-2", cost: "$0", complexity: "moderate", integrates: ["Convex"] },
+      { name: "Resend", url: "https://resend.com", description: "Transactional email with great DX.", timing: "Week 3-4", cost: "$0", complexity: "quick", integrates: ["Convex"] },
+      { name: "Loops", url: "https://loops.so", description: "Marketing-focused email alternative.", tag: "Alt", timing: "Week 3-4", cost: "$0", complexity: "quick", useWhen: "Marketing emails are primary focus" },
+      { name: "Superwall", url: "https://superwall.com", description: "Paywalls, receipts, subscription flow.", timing: "Week 4-5", cost: "$0*", complexity: "involved", integrates: ["Convex", "AppsFlyer"] },
+      { name: "RevenueCat", url: "https://revenuecat.com", description: "IAP platform with deep integrations.", tag: "Alt", timing: "Week 4-5", cost: "$0*", complexity: "involved", useWhen: "Need more integrations or better paywalls" },
+      { name: "OpenAI", url: "https://platform.openai.com", description: "Text, image, voice models for AI features.", timing: "varies", cost: "pay/use", complexity: "quick" },
     ],
   },
   {
@@ -69,11 +74,11 @@ const stages: Stage[] = [
     summary: "AI-accelerated workflow for shipping fast.",
     accent: "amber",
     tools: [
-      { name: "Cursor", url: "https://cursor.com", description: "AI-first IDE for fast shipping." },
-      { name: "Claude Code", url: "https://code.claude.com", description: "Terminal AI for greenfield builds." },
-      { name: "Figma", url: "https://figma.com", description: "Branding, icons, App Store graphics." },
-      { name: "Willow Voice", url: "https://willowvoice.com", description: "Mac speech-to-text for fast prompting." },
-      { name: "Ebb", url: "https://ebb.cool", description: "Distraction blocker for deep work." },
+      { name: "Cursor", url: "https://cursor.com", description: "AI-first IDE for fast shipping.", timing: "Day 1", cost: "$20/mo", complexity: "quick" },
+      { name: "Claude Code", url: "https://code.claude.com", description: "Terminal AI for greenfield builds.", timing: "Day 1", cost: "$20/mo", complexity: "quick" },
+      { name: "Figma", url: "https://figma.com", description: "Branding, icons, App Store graphics.", timing: "Week 5+", cost: "$0", complexity: "quick" },
+      { name: "Willow Voice", url: "https://willowvoice.com", description: "Mac speech-to-text for fast prompting.", timing: "optional", cost: "one-time", complexity: "quick" },
+      { name: "Ebb", url: "https://ebb.cool", description: "Distraction blocker for deep work.", timing: "optional", cost: "$0", complexity: "quick" },
     ],
   },
   {
@@ -82,12 +87,12 @@ const stages: Stage[] = [
     summary: "Landing pages, content, paid growth.",
     accent: "emerald",
     tools: [
-      { name: "Vercel", url: "https://vercel.com", description: "Landing page and blog with fast iteration." },
-      { name: "Apple Search Ads", url: "https://ads.apple.com", description: "High-intent paid acquisition." },
-      { name: "Meta Ads", url: "https://adsmanager.facebook.com", description: "Scalable paid social for mobile apps." },
-      { name: "Sanity", url: "https://sanity.io", description: "CMS for shipping SEO content quickly." },
-      { name: "Pallyy", url: "https://pallyy.com", description: "Social media scheduler for all platforms." },
-      { name: "Screen Studio", url: "https://screen.studio", description: "Crisp app recordings for marketing." },
+      { name: "Vercel", url: "https://vercel.com", description: "Landing page and blog with fast iteration.", timing: "Week 5", cost: "$0", complexity: "quick" },
+      { name: "Apple Search Ads", url: "https://ads.apple.com", description: "High-intent paid acquisition.", timing: "Post-launch", cost: "pay/tap", complexity: "moderate" },
+      { name: "Meta Ads", url: "https://adsmanager.facebook.com", description: "Scalable paid social for mobile apps.", timing: "Post-launch", cost: "pay/result", complexity: "involved" },
+      { name: "Sanity", url: "https://sanity.io", description: "CMS for shipping SEO content quickly.", timing: "Post-launch", cost: "$0", complexity: "moderate" },
+      { name: "Pallyy", url: "https://pallyy.com", description: "Social media scheduler for all platforms.", timing: "Post-launch", cost: "$0", complexity: "quick" },
+      { name: "Screen Studio", url: "https://screen.studio", description: "Crisp app recordings for marketing.", timing: "varies", cost: "one-time", complexity: "quick" },
     ],
   },
   {
@@ -96,9 +101,9 @@ const stages: Stage[] = [
     summary: "Track product and growth loops.",
     accent: "violet",
     tools: [
-      { name: "PostHog", url: "https://posthog.com", description: "Product analytics with modern depth." },
-      { name: "AppsFlyer", url: "https://appsflyer.com", description: "Attribution and MMP for paid growth." },
-      { name: "AppTweak", url: "https://apptweak.com", description: "App Store optimization insights." },
+      { name: "PostHog", url: "https://posthog.com", description: "Product analytics with modern depth.", timing: "Week 5", cost: "$0", complexity: "quick" },
+      { name: "AppsFlyer", url: "https://appsflyer.com", description: "Attribution and MMP for paid growth.", timing: "Pre-launch", cost: "$0", complexity: "moderate" },
+      { name: "AppTweak", url: "https://apptweak.com", description: "App Store optimization insights.", timing: "Scale phase", cost: "$99/mo", complexity: "moderate" },
     ],
   },
 ];
@@ -207,97 +212,139 @@ export default function MobileStackPage() {
         </nav>
 
         {/* Stages */}
-        <div style={{ marginTop: "4rem", display: "flex", flexDirection: "column", gap: "4rem" }}>
+        <div className={styles.timeline} style={{ marginTop: "4rem", display: "flex", flexDirection: "column", gap: "4rem" }}>
+          <div className={styles.timelineSpine} aria-hidden="true" />
           {stages.map((stage, idx) => (
-            <section
-              key={stage.step}
-              id={stage.title.toLowerCase()}
-              className={styles.fadeUp}
-              style={{ animationDelay: `${0.4 + idx * 0.1}s` }}
-            >
-              {/* Stage header */}
-              <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
-                <div
-                  className={styles.stageDot}
-                  style={{
-                    borderColor: accentColors[stage.accent],
-                    color: accentColors[stage.accent],
-                    boxShadow: `0 0 20px color-mix(in srgb, ${accentColors[stage.accent]} 40%, transparent)`,
-                  }}
-                >
-                  {stage.step}
-                </div>
-                <div>
-                  <h2
+            <div key={stage.step}>
+              <section
+                id={stage.title.toLowerCase()}
+                className={styles.fadeUp}
+                style={{ animationDelay: `${0.4 + idx * 0.1}s` }}
+              >
+                {/* Stage header */}
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem" }}>
+                  <div
+                    className={styles.stageDot}
                     style={{
-                      fontFamily: "var(--font-syne)",
-                      fontSize: "1.75rem",
-                      fontWeight: 600,
-                      color: "var(--text-primary)",
+                      borderColor: accentColors[stage.accent],
+                      color: accentColors[stage.accent],
+                      boxShadow: `0 0 20px color-mix(in srgb, ${accentColors[stage.accent]} 40%, transparent)`,
                     }}
                   >
-                    {stage.title}
-                  </h2>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)" }}>{stage.summary}</p>
+                    {stage.step}
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <h2
+                      style={{
+                        fontFamily: "var(--font-syne)",
+                        fontSize: "1.75rem",
+                        fontWeight: 600,
+                        color: "var(--text-primary)",
+                      }}
+                    >
+                      {stage.title}
+                    </h2>
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-secondary)" }}>{stage.summary}</p>
+                  </div>
+                  {/* Progress dots */}
+                  <div className={styles.stageProgress}>
+                    {stages.map((_, dotIdx) => (
+                      <div
+                        key={dotIdx}
+                        className={`${styles.stageProgressDot} ${dotIdx < idx ? styles.completed : ""} ${dotIdx === idx ? styles.active : ""}`}
+                        style={dotIdx <= idx ? { background: accentColors[stage.accent], opacity: dotIdx < idx ? 0.5 : 1 } : {}}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Tools grid */}
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-                  gap: "1rem",
-                }}
-              >
-                {stage.tools.map((tool) => (
-                  <a
-                    key={tool.name}
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`${styles.toolCard} ${accentClasses[stage.accent]}`}
-                    style={{ textDecoration: "none", color: "inherit" }}
-                  >
-                    <div style={{ position: "relative", zIndex: 1 }}>
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                        <h3
-                          style={{
-                            fontFamily: "var(--font-syne)",
-                            fontSize: "1.1rem",
-                            fontWeight: 600,
-                            color: "var(--text-primary)",
-                          }}
-                        >
-                          {tool.name}
-                        </h3>
-                        {tool.tag && (
-                          <span
-                            className={styles.badge}
+                {/* Tools grid */}
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                    gap: "1rem",
+                  }}
+                >
+                  {stage.tools.map((tool) => (
+                    <a
+                      key={tool.name}
+                      href={tool.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${styles.toolCard} ${accentClasses[stage.accent]} ${tool.tag === "Alt" ? styles.isAlternative : ""}`}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      {/* Timing badge */}
+                      {tool.timing && (
+                        <span className={styles.timingBadge} style={{ background: `color-mix(in srgb, ${accentColors[stage.accent]} 20%, transparent)`, color: accentColors[stage.accent] }}>
+                          {tool.timing}
+                        </span>
+                      )}
+                      <div style={{ position: "relative", zIndex: 1 }}>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                          <h3
                             style={{
-                              fontSize: "0.6rem",
-                              padding: "0.15rem 0.5rem",
+                              fontFamily: "var(--font-syne)",
+                              fontSize: "1.1rem",
+                              fontWeight: 600,
+                              color: "var(--text-primary)",
                             }}
                           >
-                            {tool.tag}
-                          </span>
+                            {tool.name}
+                          </h3>
+                          {tool.tag && (
+                            <span
+                              className={styles.badge}
+                              style={{
+                                fontSize: "0.6rem",
+                                padding: "0.15rem 0.5rem",
+                              }}
+                            >
+                              {tool.tag}
+                            </span>
+                          )}
+                        </div>
+                        <p
+                          style={{
+                            fontSize: "0.875rem",
+                            color: "var(--text-secondary)",
+                            marginTop: "0.5rem",
+                            lineHeight: 1.5,
+                          }}
+                        >
+                          {tool.description}
+                        </p>
+                        {/* Use when helper for alternatives */}
+                        {tool.useWhen && (
+                          <p className={styles.useWhen}>Use when: {tool.useWhen}</p>
                         )}
+                        {/* Cost, complexity, integrations */}
+                        <div className={styles.toolMeta}>
+                          {tool.cost && <span>{tool.cost}</span>}
+                          {tool.cost && tool.complexity && <span className={styles.metaDot} />}
+                          {tool.complexity && <span>{tool.complexity}</span>}
+                          {tool.integrates && tool.integrates.length > 0 && (
+                            <>
+                              <span className={styles.metaDot} />
+                              <span className={styles.integratesWith}>Works with: {tool.integrates.join(", ")}</span>
+                            </>
+                          )}
+                        </div>
                       </div>
-                      <p
-                        style={{
-                          fontSize: "0.875rem",
-                          color: "var(--text-secondary)",
-                          marginTop: "0.5rem",
-                          lineHeight: 1.5,
-                        }}
-                      >
-                        {tool.description}
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </section>
+                    </a>
+                  ))}
+                </div>
+              </section>
+              {/* Stage arrow */}
+              {idx < stages.length - 1 && (
+                <div className={styles.stageArrow}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </div>
+              )}
+            </div>
           ))}
         </div>
 
